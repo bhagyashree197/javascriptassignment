@@ -21,7 +21,7 @@ function usernameValidate(idOfElement)
     let dummyVariable=0;
     valueOfElement=idOfElement.value;
     let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
-    if((userRecordArray === null) || (valueOfElement === ""))
+    if(valueOfElement === "")
     return true;
         var pattern=/^[a-zA-Z0-9][\w-]*@[a-zA-Z0-9][\w-\.]*\.[a-zA-Z0-9][\w-]*$/;
         if(!valueOfElement.match(pattern))
@@ -31,7 +31,8 @@ function usernameValidate(idOfElement)
         //idOfElement.focus();
         return false;
         }
-    
+		if(userRecordArray === null)
+				return true;
     for(var count=0;count<userRecordArray.length;count++)
     {
         if(userRecordArray[count].emailID.match(valueOfElement))

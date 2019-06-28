@@ -1,0 +1,122 @@
+.container
+{
+    width:1170px;
+    margin:0px auto;
+   
+}
+header .container
+{
+    background-color:black;
+
+	width:1170px;
+    margin:0px auto;
+}
+
+header img{
+    float:left;
+    border:5px solid rgb(255,0,0);
+}
+header h3
+{
+    float:left;
+    font-size:40px;
+    color:white;
+    margin-top:7px;
+    margin-left:50px;
+}
+.logo
+{
+    float:left;
+
+}
+.clear
+{
+    clear:both;
+}
+.mainsection
+{
+  
+    height:500px;
+}
+.mainsection .container
+{
+    margin-top:10px;
+    
+}
+.verticalMenubar
+{
+	position:fixed;
+    background-color: black;
+    padding:30px ;
+	top:250px;
+    width:16%;
+	text-align:center;
+}
+ .verticalMenubar a{
+	 display:block;
+    text-decoration: none;
+    padding:10px 0px;
+    color:white;
+   
+} 
+
+.verticalMenubar a:hover{
+    background-color:white;
+    color:rgba(255,0,0,1);
+	 padding:10px ;
+	 }
+.bodysection
+{
+	padding-left:305px;
+        min-height:650px;
+    width:74%;
+    background-color:rgba(255,0,0,0.3);
+}
+.profiletable{
+	padding:20px;
+	text-align:center;
+}
+.profiletable img
+{
+	
+	display:inline-block;
+	margin-bottom:20px;
+}
+.profileField
+{
+	margin:10px 0px ;
+}
+.profileField label 
+{
+	text-align:left;
+	font-size:22px;
+	width:150px;
+	display:inline-block;
+}
+.profileField input[type=text],input[type=number]
+{
+	width:300px;
+    height:35px;
+	font-size:20px;
+	text-align:center;
+	border-radius:30px;
+}
+.editSavebutton input[type=button]{
+    margin-top:15px;
+    width:150px;
+	margin-bottom:20px;
+    margin-left:30px;
+    height:50px;
+    padding-left:5px;
+    padding-top:3px;
+    font-size:15px;
+    background-color: black;
+    border-radius: 15px;
+    color:white;
+}
+.editSavebutton input[type=button]:disabled{
+	opacity:0.2;
+}
+.verticalMenubar h3{
+	color:white;
+	font-size:25px;

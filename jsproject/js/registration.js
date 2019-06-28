@@ -76,6 +76,9 @@ var streetName = document.getElementById("Streetname").value;
     arrayofuserobject.push(obj);
     var persondetailsinstring=JSON.stringify(arrayofuserobject);
    localStorage.setItem("registeredUserRecord",persondetailsinstring);
+   sessionUserid=arrayofuserobject.length-1;
+   sessionStorage.setItem("sessionUserId",sessionUserid);
+   window.location.replace("profilepage.html");
 
 
 
