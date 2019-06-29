@@ -67,8 +67,178 @@ header h3
 	 }
 .bodysection
 {
+    padding-right:35px;
+    padding-top:100px;   
 	padding-left:305px;
     min-height:650px;
-    width:74%;
+    width:71%;
     background-color:rgba(255,0,0,0.3);
 }
+.functionbutton
+{
+    background-color:rgba(0,0,0,0.5);
+    right:70px;
+    top:70px;
+    position:fixed;
+    padding: 10px;
+
+}
+.functionbutton  input[type=button]
+{
+    
+        width:60px;
+        margin-left:35px;
+        height:40px;
+        padding-left:5px;
+        padding-top:0px;
+        font-size:15px;
+        background-color: black;
+        border-radius: 15px;
+        color:white;
+        
+    }
+    .functionbutton a{
+
+        margin-left:30px;
+       background-color:black;
+         padding:15px;
+        display:inline-block;
+        
+        
+    }
+    .functionbutton i{
+        color:white;
+    }
+    hr{
+        
+        width:100%;
+
+    }
+    #formpage
+    {
+        padding:20px;   
+        background-color:  rgba(255,0,0,0.2);
+        text-align:left;
+        
+    }
+    #formpage h1{
+        font-size:30px;
+        text-align: center;
+    }
+    #formpage label{
+        font-size: 20px;
+        margin-bottom:10px;
+        
+    }
+    .todoItem
+  {
+      display:inline-block;
+      width:40%;
+      margin:20px 0px;
+  }
+
+  .todoItem1
+  {
+      display:block;
+      margin:20px 0px;
+  }
+textarea
+{
+    height:100px;
+    width:100%;
+    border-radius:20px;
+}
+
+    .todoItem label{
+        font-size:20px;
+        display:block; 
+}
+    #formpage input[type="text"]{
+      display:inline-block;
+      width:600px;
+  }
+  #formpage input[type="date"]{
+    display:inline-block;
+    width:200px;
+}
+  #formpage input[type="date"]
+  {
+      display:inline-block;
+     
+  }
+  
+  .categorytype
+  {
+      
+      width:200px;
+  }
+  #formpage  input[type=button]
+{
+    
+        width:190px;
+        margin-left:35px;
+        height:40px;
+        padding-left:5px;
+        padding-top:0px;
+        font-size:15px;
+        background-color: black;
+        border-radius: 15px;
+        color:white;
+        
+    }
+    #MytodopageClass
+    {
+      
+        min-width:500px;
+        
+    }
+    #MytodopageClass h1
+    {
+        font-size:30px;
+            text-align: center;
+            margin-bottom:30px;
+    }
+    
+    .todoDisplayclass
+    {
+        width:200px;
+        height:200px;
+        background-color:  rgba(255,0,0,0.2);
+        margin-left:30px;
+        display: inline-block;
+        text-align: center;
+        padding:5px;
+        margin-top:25px;
+    }
+    .MytopageClass h1
+    {
+        text-align: center;
+    }
+    .todoDisplayclass h1{
+        font-size:25px;
+        margin-top:10px;
+        
+    }
+    .todoDisplayclass h3{
+        font-size:20px;
+        margin-top:10px;
+    }
+    .todoDisplayclass input[type=button]
+    {
+        width:120px;
+        margin-top:10px;
+        height:40px;
+        padding-left:5px;
+        padding-top:0px;
+        font-size:15px;
+        background-color: black;
+        border-radius: 15px;
+        color:white;
+        
+    }
+    #deleteDiv
+    {
+        vertical-align: top;
+        width:20px;
+        height:20px;
+    }

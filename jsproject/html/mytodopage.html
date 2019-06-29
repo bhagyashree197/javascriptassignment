@@ -3,11 +3,12 @@
         <link rel="stylesheet" href="../css/mytodopage.css"/>
         <link rel="stylesheet" href="../css/normalise.css"/>
         <link rel="stylesheet" href="../css/reset.css"/>
-        <script src="./js/validationtype.js"></script>
-        <script src="./js/loginpage.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <script src="../js/validationtype.js"></script>
+        <script src="../js/mytodo.js"></script>
         
     </head>
-    <body>
+    <body onload="todopageInDisplayMode();">
         <header>
             <div class="container">
                 <div class="logo">
@@ -27,9 +28,41 @@
                 
             </div>
                 <div class="bodysection">
-					
+                    <div class="functionbutton">
+                            <input type=button name="New" value="New+" onclick="enableForm();">
+                            <a href="javascript:deletetodos();"> <i class="material-icons">delete</i></a>
+                     </div> 
+            <div id="formpage">
+                
+                    <h1>MY TODO</h1>
+                    <div class="todoItem1"><label for="Title">Title</label> <input type="text" id="Title" name="Title"></div>
+                    <div class="todoItem1"><label for="Category">Category</label>
+                    <select name="categorytype" id="categorytype">
+                        <option value="Office">Office</option>
+                        <option value="Social">Social</option>
+                        <option value="Home">Personal</option>
+                    </select></div>
+                    <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id=startDate></div>
+                    <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate></div>
+                    <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=setReminder id="setReminder"></div>
+                   <div class="todoItem1"><label for="reminderdatelabel">Reminder Date</label><input type=date name=reminderdate id="reminderdate"></div>
+                    <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label><input type="radio" name="makeTodoPublic" id="makeTodoPublic"></div>
+                    <div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="todoDescription" id="todoDescription"></textarea></div>
+                  <input type=button name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="addTodoItems();">
+                  <input type=button name="goBackToDisplayPage" id="goBackToDisplayPage" value="Go Back To Display Page" onclick="enableDisplay();">
 
-               <div class="clear"></div> 
             </div>
+            <div id="MytodopageClass">
+                <h1>MY TODO</h1>
+                
+            </div> 
+                
+                </div>   
+                
+            <hr>
+
+                    </div>
+                  
+                    
         </div>
         </body>

@@ -4,7 +4,9 @@ function profileInDisabledMode()
 
 	
 	var arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
+	alert(arrayUserRecord[1]);
 	var userId=sessionStorage.getItem("userId");
+	
 	var firstName = document.getElementById("Firstname");
 	var lastName = document.getElementById("Lastname");
 	var streetName = document.getElementById("Streetname");
@@ -12,8 +14,10 @@ function profileInDisabledMode()
 	var stateName = document.getElementById("Statename");
 	var countryName = document.getElementById("Countryname");
 	var pincode = document.getElementById("Pincode");
-	var user=document.getElementById("userName1");
-	alert(user.value);
+	//document.getElementById("userName1").innerHTML=arrayUserRecord[userid].firstName;
+
+	
+
 	//=arrayUserRecord[userId].firstName;
 	
 	firstName.value=arrayUserRecord[userId].firstName;
@@ -65,6 +69,7 @@ function saveChangedData()
 	obj.stateName=stateName;
 	obj.countryName=countryName;
 	obj.pincode=pincode;
+	obj.todoArray=[];
 	var persondetailsinstring=JSON.stringify(obj);
 	localStorage.setItem("registeredUserRecord[userid]",persondetailsinstring);
 

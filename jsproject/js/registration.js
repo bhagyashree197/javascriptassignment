@@ -64,6 +64,7 @@ var streetName = document.getElementById("Streetname").value;
   obj.pincode=pincode;
   obj.emailID=emailID;
   obj.password=password;
+  obj.todoArray=[];
 
 
   var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
