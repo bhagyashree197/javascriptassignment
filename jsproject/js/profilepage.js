@@ -37,6 +37,7 @@ function profileInDisabledMode()
 	countryName.value=arrayUserRecord[userId].countryName;
 	pincode.value=arrayUserRecord[userId].pincode;
 	Emailid.value=arrayUserRecord[userId].emailID;
+	document.getElementById("userpic").src=arrayUserRecord[userId].image;
 }
 
 function profileinEditmode()
@@ -80,6 +81,7 @@ function saveChangedData()
 	var Gender = document.querySelector('input[name="Gender"]:checked').value;
 	var password=userArrayRecord[userId].password;
 	var emailID=userArrayRecord[userId].emailID;
+	
 	var obj=new Object();
   
 	obj.firstName=firstName;
@@ -92,7 +94,8 @@ function saveChangedData()
   obj.pincode=pincode;
   obj.emailID=emailID;
   obj.password=password;
-	obj.todoArray=[];
+obj.todoArray=userArrayRecord[userId].todoArray;
+	
 	userArrayRecord[userId]=obj;
 	var persondetailsinstring=JSON.stringify(userArrayRecord);
 	localStorage.setItem("registeredUserRecord",persondetailsinstring);

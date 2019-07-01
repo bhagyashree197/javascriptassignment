@@ -38,12 +38,22 @@ window.location.replace("mytodopage.html");
 
 function todopageInDisplayMode(inputValue,userid)
 {
-	 
-    
-   
-    
-    
-        for(var count=0;count<inputValue.length;count++)
+	var e=document.getElementById("todoCards");
+	var child = e.lastElementChild;  
+	while (child) { 
+		e.removeChild(child); 
+		child = e.lastElementChild;
+	}
+	if(inputValue.length==0)
+	{
+		var li = document.createElement("noRecordText");
+		var content="<h1 style='margin-top:30px;'>No Records found</h1>";
+		li.innerHTML=content;
+		document.getElementById("todoCards").appendChild(li);
+	}
+	else
+	{
+	  for(var count=0;count<inputValue.length;count++)
         {
             var li = document.createElement("div111");
            
@@ -51,10 +61,10 @@ function todopageInDisplayMode(inputValue,userid)
         var startdate=inputValue[count].startDate;
         var endDate=inputValue[count].endDate;
         var categoryType=inputValue[count].categoryType;
-        var divaa='<div class=todoDisplayclass><input type=checkbox name="deleteDiv"><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
+        var divaa='<div class=todoDisplayclass  id=display-'+count+'><input type=checkbox name="deleteDiv" id=checkbox-'+count+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
 
         li.innerHTML=divaa;
-        document.getElementById("MytodopageClass").appendChild(li);
+        document.getElementById("todoCards").appendChild(li);
         }   
            
     	var buttonarray=document.getElementsByName("viewFullTodo");
@@ -66,15 +76,14 @@ function todopageInDisplayMode(inputValue,userid)
 					disableFields(i)
 				});
 					
-	
-				
-				
-		}		
+		}	
+	}	
 			
 			
 }
 function filterTodoFunction()
 {
+	
 	document.getElementById("formpage").style.display="none";
     document.getElementById("MytodopageClass").style.display="block"; 
 	document.getElementById("registeredUserForm").style.display="none";
@@ -82,25 +91,71 @@ function filterTodoFunction()
 	 let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	  var userid=sessionStorage.getItem("userId");
 	 var inputValue = arrayUserRecord[userid].todoArray;
-	
-	if(filterValue ==="Filter")
+	 var filteredarray=[];
+	 if(filterValue ==="Filter")
 	{
 		todopageInDisplayMode(inputValue,userid);
+		document.getElementById("filterdate").style.display="none";
+		document.getElementById("filtercategory").style.display="none";
 	}
-	else if(filterValue === "byDate")
+
+
+	 else if(document.getElementById("filterDropdown").value === "byDate")
 	{
-		inputValue.sort(function(a,b){
-			if(a.startDate<b.startdate)
-				return a
-			else
-		return b});
-	todopageInDisplayMode(inputValue,userid);
 		
+		var filterdate=document.getElementById("filterdate").value;
+		var filteredarray=inputValue.filter(function(date1){
+		return((new Date(date1.startDate)).getDate() === (new Date(filterdate)).getDate())
+		})
+		console.log(filteredarray);
+		todopageInDisplayMode(filteredarray,userid);
 	}
-	
-	
-	
+	else if(document.getElementById("filterDropdown").value === "byCategory")
+	{
+		document.getElementById("filterdate").style.display="none";
+		document.getElementById("filtercategory").style.display="inline-block";
+		if(document.getElementById("filtercategory").value ==="Category")
+		{
+			todopageInDisplayMode(inputValue,userid);
+		}
+		else if(document.getElementById("filtercategory").value ==="Office")
+		{
+			var filteredarray=inputValue.filter(function(category1){
+				return(category1.categoryType === "Office")
+				})
+		}
+		else if(document.getElementById("filtercategory").value ==="Home")
+		{
+			var filteredarray=inputValue.filter(function(category1){
+				return(category1.categoryType === "Home")
+				})
+		}
+		else if(document.getElementById("filtercategory").value ==="Social")
+		{
+			var filteredarray=inputValue.filter(function(category1){
+				return(category1.categoryType === "Social")
+				})
+		}
+		todopageInDisplayMode(filteredarray,userid);
 	}
+}
+function displaydatetext()
+{
+	if(document.getElementById("filterDropdown").value === "byDate")
+	{
+	document.getElementById("filterdate").style.display="inline-block";
+	document.getElementById("filtercategory").style.display="none";
+	}
+	else if(document.getElementById("filterDropdown").value === "byCategory")
+	{
+		document.getElementById("filterdate").style.display="none";
+		document.getElementById("filtercategory").style.display="inline-block";	
+	}
+	else
+	{
+		filterTodoFunction();
+	}
+}	
 
 
 function disableFields(i){
@@ -175,38 +230,35 @@ function enableDisplay()
     document.getElementById("formpage").style.display="none";
     document.getElementById("MytodopageClass").style.display="block";
 	document.getElementById("registeredUserForm").style.display="none";
+	window.location.reload();
 
 }
 function deletetodos()
 {
+	var checkedarray=[];
 	var arraydelete=document.getElementsByName("deleteDiv");
+	userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
+	var userid=sessionStorage.getItem("userId");
+	
+	for(var i=0;i<userRecordArray[userid].todoArray.length;i++)
+	{
+		if(document.getElementById("checkbox-"+i).checked === true)
+		{
+		//document.getElementById("todoCards").removeChild("display-"+i);
+		checkedarray.push(i);
+		}
 
-
-    let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
-    var userid=sessionStorage.getItem("userId");
-   
-    alert(userRecordArray[0]);
-    var deletedarray=[];
-    for(var count=0;count<userRecordArray[userid].todoArray.length;count++)
-    {
-        if( arraydelete[count].checked === false)
-        {
-			alert(arraydelete[count].checked);
-            
-            deletedarray=[...userRecordArray[userid].todoArray.slice(count,count+1)];
-			
-         }
-		 else{
-			 alert(arraydelete[count].checked);
-		 }
-    }
-	alert(deletedarray[0]);
-	userRecordArray[userid].todoArray=[...deletedarray];
-    var todostringify=JSON.stringify(userRecordArray);
+	}
+	for(let count=checkedarray.length-1;count>=0;count--)
+	{
+		userRecordArray[userid].todoArray.splice(checkedarray[count],1);
+	}
+var todostringify=JSON.stringify(userRecordArray);
     localStorage.setItem("registeredUserRecord",todostringify);
 	window.location.reload();
 	
 }
+
 
 function deleteSession()
 {
@@ -270,11 +322,7 @@ function editTodoItems(){
 		var startDate=document.getElementById("editstartDate").value;	
 		var endDate=document.getElementById("editendDate").value;
 		var setReminder=document.getElementById("editsetReminder");
-
-	
-
-        var reminderdate=document.getElementById("editreminderdate").value;
-
+		 var reminderdate=document.getElementById("editreminderdate").value;
        var makeTodoPublic=document.getElementById("editmakeTodoPublic").value;
        var todoDescription=document.getElementById("edittodoDescription").value;
 			
@@ -295,9 +343,25 @@ function editTodoItems(){
 				document.getElementById("MytodopageClass").style.display="block";
 				document.getElementById("formpage").style.display="none";
 				disableFields(todoid);
+}
 
-				
-		
-		
-	}
+function searchTodoByName()
+{
+	var arrayValue=[];
+	var searchtext=document.getElementById("searchTodo").value;
 	
+	let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
+	var userid=sessionStorage.getItem("userId");
+	var inputValue=userRecordArray[userid].todoArray;
+	if(searchtext === ""){
+	todopageInDisplayMode(inputValue,userid);}
+	else{
+
+	for(var i=0;i<inputValue.length;i++)
+	{
+	if(searchtext.toUpperCase() === inputValue[i].title.toUpperCase()){
+	arrayValue.push(inputValue[i]);}
+	}
+	todopageInDisplayMode(arrayValue,userid);
+}
+}

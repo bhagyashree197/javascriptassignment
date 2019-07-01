@@ -65,6 +65,8 @@ var streetName = document.getElementById("Streetname").value;
   obj.emailID=emailID;
   obj.password=password;
   obj.todoArray=[];
+  obj.image=sessionStorage.getItem("tempimgdata");
+  sessionStorage.removeItem("tempimgdata");
 
 
   var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
@@ -79,15 +81,34 @@ var streetName = document.getElementById("Streetname").value;
    localStorage.setItem("registeredUserRecord",persondetailsinstring);
    sessionUserid=arrayofuserobject.length-1;
    sessionStorage.setItem("sessionUserId",sessionUserid);
-   window.location.replace("profilepage.html");
+   window.location="profilepage.html";
 
 
 
 }
 function changeProfilePicture()
 {
-    var imageName=document.getElementById("profilepic").value;
-    alert(imageName);
-    alert("hello");
+    
+    var Image =document.getElementById("profilepic").files[0];
+
+    getimgbase64(Image);
+    function getimgbase64(Image){
+        var reader = new FileReader();
+        reader.readAsDataURL(Image);
+       
+        reader.onload = function () {
+          
+            var imgdata = reader.result;
+
+            document.getElementById("userpic").src=imgdata;
+            sessionStorage.setItem("tempimgdata",imgdata);
+        
+        };
+    
+        reader.onerror = function (error) {
+        };
+      
+     
+    }
     
 }
