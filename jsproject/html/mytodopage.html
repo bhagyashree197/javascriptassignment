@@ -8,7 +8,7 @@
         <script src="../js/mytodo.js"></script>
         
     </head>
-    <body onload="todopageInDisplayMode();">
+    <body onload="filterTodoFunction();">
         <header>
             <div class="container">
                 <div class="logo">
@@ -24,7 +24,7 @@
                 
                      <a href="profilepage.html">My Profile</a>
                     <a href="mytodopage.html">My ToDo</a>
-                   <a href="loginpage.html">Logout</a>
+                   <a href="javascript:deleteSession();">Logout</a>
                 
             </div>
                 <div class="bodysection">
@@ -44,8 +44,8 @@
                     </select></div>
                     <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id=startDate></div>
                     <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate></div>
-                    <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=setReminder id="setReminder"></div>
-                   <div class="todoItem1"><label for="reminderdatelabel">Reminder Date</label><input type=date name=reminderdate id="reminderdate"></div>
+                    <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=setReminder id="setReminder" onchange="enabletextbox();"></div>
+                   <div class="todoItem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label><input type=date name=reminderdate id="reminderdate" disabled style="display:none;"  ></div>
                     <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label><input type="radio" name="makeTodoPublic" id="makeTodoPublic"></div>
                     <div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="todoDescription" id="todoDescription"></textarea></div>
                   <input type=button name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="addTodoItems();">
@@ -54,8 +54,40 @@
             </div>
             <div id="MytodopageClass">
                 <h1>MY TODO</h1>
-                
+				<div class="filterTodoClass">
+				<input type=text name="searchTodo" id="searchTodo" placeholder="Type the name"><input type=button name="searchTodoButton" id="searchTodoButton" value="Search" onclick="searchTodoByName();">
+                <select id="filterDropdown" onchange="filterTodoFunction();">
+				<option value="Filter" selected>No Filter</option>
+				<option value="byName">By Name</option>
+				<option value="byDate">By Date</option>
+				<option value="byCategory">By Category</option>
+				
+				</select>
+		   </div>
             </div> 
+			<div id="registeredUserForm">
+			<h1>MY TODO</h1>
+                    <div class="todoItem1"><label for="Title">Title</label> <input type="text" id="editTitle" name="Title"></div>
+                    <div class="todoItem1"><label for="Category">Category</label>
+                    <select name="editcategorytype" id="editcategorytype">
+                        <option value="Office">Office</option>
+                        <option value="Social">Social</option>
+                        <option value="Home">Personal</option>
+                    </select></div>
+                    <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id=editstartDate></div>
+                    <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=editendDate></div>
+                    <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=editsetReminder id="editsetReminder"></div>
+                   <div class="todoItem1"><label for="reminderdatelabel">Reminder Date</label><input type=date name=reminderdate id="editreminderdate"></div>
+                    <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label><input type="radio" name="editmakeTodoPublic" id="editmakeTodoPublic"></div>
+					<div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="edittodoDescription" id="edittodoDescription"></textarea></div>
+					<input type=button name="editTodoItem" id="editTodoItem" value="Edit" onclick="editTodoItems();">
+					<input type=button name="saveEditedTodoItem" id="saveEditedTodoItem" value="Save" onclick="saveEditedTodoItem();">
+                  <input type=button name="goBackToDisplayPage" id="goBackToDisplayPage" value="Go Back To Display Page" onclick="enableDisplay();">
+
+			
+			
+			</div>
+			
                 
                 </div>   
                 

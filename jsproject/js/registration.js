@@ -55,8 +55,8 @@ var streetName = document.getElementById("Streetname").value;
   var obj=new Object();
   
   obj.firstName=firstName;
-  obj.lastName=lastName;
-
+  obj.lastName=lastName
+  obj.Gender=gender;
   obj.streetName=streetName;
   obj.cityName=cityName;
   obj.stateName=stateName;

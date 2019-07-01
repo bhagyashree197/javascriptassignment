@@ -4,7 +4,7 @@ function profileInDisabledMode()
 
 	
 	var arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
-	alert(arrayUserRecord[1]);
+	
 	var userId=sessionStorage.getItem("userId");
 	
 	var firstName = document.getElementById("Firstname");
@@ -14,6 +14,15 @@ function profileInDisabledMode()
 	var stateName = document.getElementById("Statename");
 	var countryName = document.getElementById("Countryname");
 	var pincode = document.getElementById("Pincode");
+	var genderarray=document.getElementsByName("Gender");
+	 if(arrayUserRecord[userId].Gender === "Male")
+		 document.getElementById("Male").checked=true;
+	 else if(arrayUserRecord[userId].Gender === "Female")
+		 document.getElementById("Female").checked=true;
+	 else{
+		 document.getElementById("Other").checked=true;
+	 }
+		 
 	//document.getElementById("userName1").innerHTML=arrayUserRecord[userid].firstName;
 
 	
@@ -27,11 +36,17 @@ function profileInDisabledMode()
 	stateName.value=arrayUserRecord[userId].stateName;
 	countryName.value=arrayUserRecord[userId].countryName;
 	pincode.value=arrayUserRecord[userId].pincode;
+	Emailid.value=arrayUserRecord[userId].emailID;
 }
 
 function profileinEditmode()
 {
 	document.getElementById("Edit").disabled=true;
+		document.getElementById("Male").disabled=false;
+	document.getElementById("Female").disabled=false;
+	document.getElementById("Other").disabled=false;
+	
+	
 	document.getElementById("Save").disabled=false;
 	document.getElementById("Firstname").disabled=false;
 	document.getElementById("Lastname").disabled=false;
@@ -48,11 +63,12 @@ function profileinEditmode()
 		var stateName = document.getElementById("Statename");
 		var countryName = document.getElementById("Countryname");
 		var pincode = document.getElementById("Pincode");
-		var obj=new Object();
+	
   
 }
 function saveChangedData()
 {
+	var userId=sessionStorage.getItem("userId");
 	var firstName = document.getElementById("Firstname").value;
 	var lastName = document.getElementById("Lastname").value;
 	var streetName = document.getElementById("Streetname").value;
@@ -60,18 +76,26 @@ function saveChangedData()
 	var stateName = document.getElementById("Statename").value;
 	var countryName = document.getElementById("Countryname").value;
 	var pincode = document.getElementById("Pincode").value;
+	var userArrayRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
+	var Gender = document.querySelector('input[name="Gender"]:checked').value;
+	var password=userArrayRecord[userId].password;
+	var emailID=userArrayRecord[userId].emailID;
 	var obj=new Object();
   
 	obj.firstName=firstName;
-	obj.lastName=lastName;
-	obj.streetName=streetName;
-	obj.cityName=cityName;
-	obj.stateName=stateName;
-	obj.countryName=countryName;
-	obj.pincode=pincode;
+  obj.lastName=lastName;
+  obj.gender=Gender;
+   obj.streetName=streetName;
+  obj.cityName=cityName;
+  obj.stateName=stateName;
+  obj.countryName=countryName;
+  obj.pincode=pincode;
+  obj.emailID=emailID;
+  obj.password=password;
 	obj.todoArray=[];
-	var persondetailsinstring=JSON.stringify(obj);
-	localStorage.setItem("registeredUserRecord[userid]",persondetailsinstring);
+	userArrayRecord[userId]=obj;
+	var persondetailsinstring=JSON.stringify(userArrayRecord);
+	localStorage.setItem("registeredUserRecord",persondetailsinstring);
 
 	 disableTextbox();
    
@@ -88,5 +112,10 @@ function disableTextbox()
 	document.getElementById("Cityname").disabled=true;
 	document.getElementById("Statename").disabled=true;
 	document.getElementById("Countryname").disabled=true;
+	document.getElementById("Emailid").disabled=true;
+	document.getElementById("Male").disabled=true;
+	document.getElementById("Female").disabled=true;
+	document.getElementById("Other").disabled=true;
+	
 	
 }
