@@ -1,4 +1,4 @@
-
+	
 function validateonlycharacters(Idofelement) {
    
     let Valueofelement = Idofelement.value;
@@ -15,6 +15,19 @@ function validateonlycharacters(Idofelement) {
     Idofelement.id.focus();
         return false;
     
+}
+function validateCharactersandDigit(id)
+{
+	alert("hii");
+	var valueOfElement=document.getElementById("id").value;
+	var patter=/^[a-zA-Z0-9]+$/;
+	if(!valueOfElement.match(pattern))
+	{
+		alert(id+"can contain only Alphabets and Digits");
+		id.focus();
+		return false;
+	}
+	return true;
 }
 function usernameValidate(idOfElement)
 {

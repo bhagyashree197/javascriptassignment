@@ -1,21 +1,23 @@
-
-.clear
-{
-    clear:both;
-}
 .container
 {
     width:1170px;
     margin:0px auto;
    
 }
-header
+header .container
 {
     background-color:black;
+	position:relative;
+	width:1170px;
+	padding:20px;
+    margin:0px auto;
 }
+
 header img{
-    float:left;
-    border:5px solid red;
+    position:absolute;
+	height:150px;
+	top:0px;
+
 }
 header h3
 {
@@ -23,7 +25,10 @@ header h3
     font-size:40px;
     color:white;
     margin-top:7px;
-    margin-left:50px;
+    margin-left:250px;
+}
+.clear{
+	clear:both;
 }
 .logo
 {
@@ -96,7 +101,7 @@ border-radius: 15px;
 .outersection
 {
     width:300px;
-    background-color:rgba(255,0,0,0.3);
+    background-color:rgba(10, 124, 13, 0.5);
     padding:50px;
     border-radius:15%;
     display: inline-block;

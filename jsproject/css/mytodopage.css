@@ -7,14 +7,17 @@
 header .container
 {
     background-color:black;
-
+	position:relative;
 	width:1170px;
+	padding:20px;
     margin:0px auto;
 }
 
 header img{
-    float:left;
-    border:5px solid red;
+    position:absolute;
+	height:150px;
+	top:0px;
+
 }
 header h3
 {
@@ -22,7 +25,7 @@ header h3
     font-size:40px;
     color:white;
     margin-top:7px;
-    margin-left:50px;
+    margin-left:250px;
 }
 .logo
 {
@@ -72,13 +75,13 @@ header h3
 	padding-left:305px;
     min-height:650px;
     width:71%;
-    background-color:rgba(255,0,0,0.3);
+    background-color:rgba(232, 237, 229, 0.3);
 }
 .functionbutton
 {
     background-color:rgba(0,0,0,0.5);
     right:70px;
-    top:70px;
+    top:85px;
     position:fixed;
     padding: 10px;
 
@@ -217,7 +220,7 @@ textarea
     {
         font-size:30px;
             text-align: center;
-            margin-bottom:30px;
+            margin-bottom:10px;
     }
 	.filterTodoClass
 	{
@@ -257,7 +260,7 @@ textarea
     {
         width:200px;
         height:200px;
-        background-color:  rgba(255,255,255,0.5);
+        background-color:rgba(10, 124, 13, 0.5);
         margin-left:30px;
         display: inline-block;
         text-align: center;
@@ -273,6 +276,19 @@ textarea
         margin-top:10px;
         
     }
+	.isDoneDiv h3
+	{
+		font-size:20px;
+        margin-top:10px;
+		display:inline-block;
+		margin-right:10px;;
+	}
+	.isDoneDiv input[type="checkbox"]
+	{
+		width:20px;
+		height:20px;
+		
+	}
     .todoDisplayclass h3{
         font-size:20px;
         margin-top:10px;

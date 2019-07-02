@@ -7,14 +7,17 @@
 header .container
 {
     background-color:black;
-
+	position:relative;
 	width:1170px;
+	padding:20px;
     margin:0px auto;
 }
 
 header img{
-    float:left;
-    border:5px solid rgb(255,0,0);
+    position:absolute;
+	height:150px;
+	top:0px;
+
 }
 header h3
 {
@@ -22,7 +25,7 @@ header h3
     font-size:40px;
     color:white;
     margin-top:7px;
-    margin-left:50px;
+    margin-left:250px;
 }
 .logo
 {

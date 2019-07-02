@@ -26,6 +26,7 @@ obj.setReminder=setReminder;
 obj.reminderDate=reminderdate;
 obj.makeTodoPublic=makeTodoPublic;
 obj.todoDescription=todoDescription;
+obj.todoStatus="isPending";
 arrayUserRecord[userid].todoArray.push(obj);
 var stringUserRecord=JSON.stringify(arrayUserRecord);
 localStorage.setItem("registeredUserRecord",stringUserRecord);
@@ -61,7 +62,7 @@ function todopageInDisplayMode(inputValue,userid)
         var startdate=inputValue[count].startDate;
         var endDate=inputValue[count].endDate;
         var categoryType=inputValue[count].categoryType;
-        var divaa='<div class=todoDisplayclass  id=display-'+count+'><input type=checkbox name="deleteDiv" id=checkbox-'+count+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
+        var divaa='<div class=todoDisplayclass  id=display-'+count+'><input type=checkbox name="deleteDiv" id=checkbox-'+count+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><div class="isDoneDiv"><h3>Is Done</h3><input type=checkbox name="isDone" id="isDone"'+count+' onchange="changeStatusOfTodo(this);"></div><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
 
         li.innerHTML=divaa;
         document.getElementById("todoCards").appendChild(li);
@@ -337,6 +338,7 @@ function editTodoItems(){
 				obj.reminderDate=reminderdate;
 				obj.makeTodoPublic=makeTodoPublic;
 				obj.todoDescription=todoDescription;
+				obj.todoStatus=userRecordArray[userid].todoArray.todoStatus;
 				userRecordArray[userid].todoArray[todoid]=obj;
 				var stringUserRecord=JSON.stringify(userRecordArray);
 				localStorage.setItem("registeredUserRecord",stringUserRecord);
@@ -364,4 +366,42 @@ function searchTodoByName()
 	}
 	todopageInDisplayMode(arrayValue,userid);
 }
+}
+function validStartDate()
+{
+	var valueOfElement=document.getElementById("startDate").value;
+	var today=new Date();
+	if((new Date(valueOfElement)).getDate()< today.getDate())
+	{
+		alert("Inavlid date:Start Date cannot be less than the current date");
+		document.getElementById("startDate").focus();
+		return false;
+	}
+	return true;
+}
+function validEndDate(IdOfElement){
+	var valueOfStartDate=document.getElementById("startDate").value;
+	var valueOfEndDate=IdOfElement.value;
+	if((new Date(valueOfEndDate)).getDate()<(new Date(valueOfStartDate)).getDate())
+	{
+		alert(IdOfElement.id+"cannot be before Start Date");
+		document.getElementById("endDate").focus();
+		return false;
+}
+return true;
+}
+
+function changeStatusOfTodo(IdOfElement){
+	let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
+				var userid=sessionStorage.getItem("userId");
+			if(IdOfElement.checked === true)
+			{
+			userRecordArray[userid].todoArray.todoStatus="isDone";
+			}
+			else
+			{
+				userRecordArray[userid].todoArray.todoStatus="isPending";
+			}
+			localStorage.setItem("registeredUserRecord",JSON.stringify(userRecordArray));
+			
 }
