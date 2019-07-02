@@ -15,8 +15,9 @@ header .container
 
 header img{
     position:absolute;
-	height:150px;
-	top:0px;
+	height:100px;
+    top:0px;
+    border: 5px solid #1c5caf;
 
 }
 header h3
@@ -101,7 +102,8 @@ border-radius: 15px;
 .outersection
 {
     width:300px;
-    background-color:rgba(10, 124, 13, 0.5);
+   /*  background-color:  #1c5caf; */
+    background-color:rgba(5, 137, 255, 0.4);
     padding:50px;
     border-radius:15%;
     display: inline-block;

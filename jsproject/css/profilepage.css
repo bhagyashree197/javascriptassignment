@@ -15,8 +15,9 @@ header .container
 
 header img{
     position:absolute;
-	height:150px;
-	top:0px;
+	height:100px;
+    top:0px;
+    border: 5px solid #1c5caf;
 
 }
 header h3
@@ -49,7 +50,7 @@ header h3
 .verticalMenubar
 {
 	position:fixed;
-    background-color: black;
+    background-color:black;
     padding:30px ;
 	top:250px;
     width:16%;
@@ -65,25 +66,40 @@ header h3
 
 .verticalMenubar a:hover{
     background-color:white;
-    color:rgba(255,0,0,1);
+    color:#1c5caf;
+
 	 padding:10px ;
 	 }
 .bodysection
 {
-	padding-left:305px;
+	padding:20px 20px 20px 305px;
         min-height:650px;
     width:74%;
-    background-color:rgba(255,0,0,0.3);
+    background-color:rgba(121, 120, 120, 0.1);
+
 }
 .profiletable{
-	padding:20px;
+  
+    padding:20px;
+   
 	text-align:center;
 }
 .profiletable img
 {
-	
 	display:inline-block;
-	margin-bottom:20px;
+    margin-bottom:20px;
+    border:2px solid black;
+}
+.imagediv
+{
+    display:inline-block;
+    position:relative;
+}
+.profiletable i{
+    position:absolute;
+    font-size:30px;
+    top:75px;
+    right:-5px;
 }
 .profileField
 {
@@ -122,4 +138,10 @@ header h3
 }
 .verticalMenubar h3{
 	color:white;
-	font-size:25px;
+    font-size:25px;
+}
+#getnewimage{
+    position:absolute;
+    top:80px;
+    opacity:0;
+}

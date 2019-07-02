@@ -14,7 +14,6 @@ function profileInDisabledMode()
 	var stateName = document.getElementById("Statename");
 	var countryName = document.getElementById("Countryname");
 	var pincode = document.getElementById("Pincode");
-	var genderarray=document.getElementsByName("Gender");
 	 if(arrayUserRecord[userId].Gender === "Male")
 		 document.getElementById("Male").checked=true;
 	 else if(arrayUserRecord[userId].Gender === "Female")
@@ -22,14 +21,7 @@ function profileInDisabledMode()
 	 else{
 		 document.getElementById("Other").checked=true;
 	 }
-		 
-	//document.getElementById("userName1").innerHTML=arrayUserRecord[userid].firstName;
-
-	
-
-	//=arrayUserRecord[userId].firstName;
-	
-	firstName.value=arrayUserRecord[userId].firstName;
+		firstName.value=arrayUserRecord[userId].firstName;
 	lastName.value=arrayUserRecord[userId].lastName;
 	streetName.value=arrayUserRecord[userId].streetName;
 	cityName.value=arrayUserRecord[userId].cityName;
@@ -37,7 +29,7 @@ function profileInDisabledMode()
 	countryName.value=arrayUserRecord[userId].countryName;
 	pincode.value=arrayUserRecord[userId].pincode;
 	Emailid.value=arrayUserRecord[userId].emailID;
-	document.getElementById("userpic").src=arrayUserRecord[userId].image;
+	document.getElementById("edituserpic").src=arrayUserRecord[userId].image;
 }
 
 function profileinEditmode()
@@ -56,6 +48,7 @@ function profileinEditmode()
 	document.getElementById("Statename").disabled=false;
 	document.getElementById("Countryname").disabled=false;
 	document.getElementById("Cityname").disabled=false;
+	document.getElementById("getnewimage").disabled=false;
 		 
 		var firstName = document.getElementById("Firstname");
 		var lastName = document.getElementById("Lastname");
@@ -86,7 +79,7 @@ function saveChangedData()
   
 	obj.firstName=firstName;
   obj.lastName=lastName;
-  obj.gender=Gender;
+  obj.Gender=Gender;
    obj.streetName=streetName;
   obj.cityName=cityName;
   obj.stateName=stateName;
@@ -95,6 +88,7 @@ function saveChangedData()
   obj.emailID=emailID;
   obj.password=password;
 obj.todoArray=userArrayRecord[userId].todoArray;
+obj.image=userArrayRecord[userId].image;
 	
 	userArrayRecord[userId]=obj;
 	var persondetailsinstring=JSON.stringify(userArrayRecord);
@@ -102,11 +96,12 @@ obj.todoArray=userArrayRecord[userId].todoArray;
 
 	 disableTextbox();
    
-   return true;
+
 }
 function disableTextbox()
 {
-		document.getElementById("Edit").disabled=false;
+	document.getElementById("getnewimage").disabled=true;
+	document.getElementById("Edit").disabled=false;
 	document.getElementById("Save").disabled=true;
 	document.getElementById("Firstname").disabled=true;
 	document.getElementById("Lastname").disabled=true;
@@ -122,3 +117,48 @@ function disableTextbox()
 	
 	
 }
+/* unction getnewfile()
+{
+  document.getElementById("editicon").onclick(invokeFileButton());
+}
+ function invokeFileButton()
+  {
+	  document.getElementById("getnewimage").click();
+	  document.getElementById("getnewimage").onchange(editImage()); 
+} */
+
+
+function editImage()
+{
+    
+    var Image =document.getElementById("getnewimage").files[0];
+
+    getimgbase64(Image);
+    function getimgbase64(Image){
+        var reader = new FileReader();
+        reader.readAsDataURL(Image);
+       
+        reader.onload = function () {
+          
+            var imgdata = reader.result;
+            sessionStorage.setItem("tempimgdata1",imgdata);
+			document.getElementById("edituserpic").src=sessionStorage.tempimgdata1;
+			var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
+			var userid=sessionStorage.getItem("userId");
+
+			arrayofuserobject[userid].image=sessionStorage.getItem("tempimgdata1");
+			var tostring=JSON.stringify(arrayofuserobject);
+			localStorage.setItem("registeredUserRecord",tostring);
+        };
+    
+        reader.onerror = function (error) {
+        };
+      
+		
+
+    }
+    
+}
+
+  
+

@@ -13,7 +13,7 @@
         <header>
             <div class="container">
                 <div class="logo">
-                <img src="../images/todo.png" height="100">
+                <img src="../images/todo1.jpg" height="100">
                 <h3>MY TODO APP</h3>
                 </div>
                 <div class="clear"></div>
@@ -33,20 +33,21 @@
                             <input type=button name="New" value="New+" onclick="enableForm();">
                             <a href="javascript:deletetodos();"> <i class="material-icons">delete</i></a>
                      </div> 
+
             <div id="formpage">
                 
                     <h1>MY TODO</h1>
-                    <div class="todoItem1"><label for="Title">Title</label> <input type="text" id="Title" name="Title"></div>
+                    <div class="todoItem1"><label for="Title">Title</label> <input type="text" id="Title" name="Title" required onfocusout="validateCharactersandDigit(this);"  ></div>
                     <div class="todoItem1"><label for="Category">Category</label>
                     <select name="categorytype" id="categorytype">
                         <option value="Office">Office</option>
                         <option value="Social">Social</option>
                         <option value="Home">Personal</option>
                     </select></div>
-                    <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id="startDate" onfocusout="validStartDate();"></div>
+                    <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id="startDate" onfocusout="validStartDate();" required></div>
                     <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate onfocusout="validEndDate(this);"></div>
                     <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=setReminder id="setReminder" onchange="enabletextbox();"></div>
-                   <div class="todoItem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label><input type=date name=reminderdate id="reminderdate" disabled style="display:none;" "validEndDate(this);" ></div>
+                   <div class="todoItem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label><input type=date name=reminderdate id="reminderdate" disabled style="display:none;"onfocusout="validReminderDate(this);""></div>
                     <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label><input type="radio" name="makeTodoPublic" id="makeTodoPublic"></div>
                     <div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="todoDescription" id="todoDescription"></textarea></div>
                   <input type=button name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="addTodoItems();">
@@ -72,7 +73,7 @@
                    <option value=Home>Home</option>
                 </select>
                
-           </div>
+            </div>
            <div id="todoCards"></div>
             </div> 
 			<div id="registeredUserForm">
@@ -101,7 +102,7 @@
                 
                 </div>   
                 
-            <hr>
+            
 
                     </div>
                   

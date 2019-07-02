@@ -1,5 +1,6 @@
 function addTodoItems()
 {
+
   
    document.getElementById("MytodopageClass").style.display="none";
 var title=document.getElementById("Title").value;
@@ -8,16 +9,26 @@ var categorytype=document.getElementById("categorytype").value;
 var startDate=document.getElementById("startDate").value;
 var endDate=document.getElementById("endDate").value;
 var setReminder=document.getElementById("setReminder").value;
-alert(setReminder);
-	
-
 var reminderdate=document.getElementById("reminderdate").value;
-
 var makeTodoPublic=document.getElementById("makeTodoPublic").value;
 var todoDescription=document.getElementById("todoDescription").value;
 var userid=sessionStorage.getItem("userId");
 let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
+
+
+var todoID=makeid(5);
+function makeid(length) {
+   var result           = '';
+   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
 var obj=new Object();
+obj.todoID=todoID;
 obj.title=title;
 obj.categoryType=categorytype;
 obj.startDate=startDate;
@@ -61,11 +72,33 @@ function todopageInDisplayMode(inputValue,userid)
         var title = inputValue[count].title;
         var startdate=inputValue[count].startDate;
         var endDate=inputValue[count].endDate;
-        var categoryType=inputValue[count].categoryType;
-        var divaa='<div class=todoDisplayclass  id=display-'+count+'><input type=checkbox name="deleteDiv" id=checkbox-'+count+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><div class="isDoneDiv"><h3>Is Done</h3><input type=checkbox name="isDone" id="isDone"'+count+' onchange="changeStatusOfTodo(this);"></div><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
-
-        li.innerHTML=divaa;
-        document.getElementById("todoCards").appendChild(li);
+		var categoryType=inputValue[count].categoryType;
+		var todoStatus=inputValue[count].todoStatus;
+		var current=new Date();
+		if(todoStatus == "isPending")
+		{
+			if((new Date(endDate)).getDate()<current.getDate())
+			{
+			var classname="isLate";
+			}
+			else
+			{
+				var classname="";
+			}
+		}
+		else if(todoStatus == "isDone")
+		{
+			var classname="isDonetodo";	
+		}
+		
+        var divtodo='<div class="todoDisplayclass ' +classname+'" id=display-'+inputValue[count].todoID+'><input type=checkbox name="deleteDiv" id=checkbox-'+inputValue[count].todoID+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><div class="isDoneDiv"><h3>Is Done</h3><input type=checkbox name="isDone" id="isDone-'+count+'" onclick=changeStatusOfTodo(this);></div><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
+		
+        li.innerHTML=divtodo;
+		document.getElementById("todoCards").appendChild(li);
+		if(todoStatus == "isDone")
+		{
+			document.getElementById("isDone-"+count).checked=true; 
+		}
         }   
            
     	var buttonarray=document.getElementsByName("viewFullTodo");
@@ -78,6 +111,7 @@ function todopageInDisplayMode(inputValue,userid)
 				});
 					
 		}	
+
 	}	
 			
 			
@@ -108,7 +142,6 @@ function filterTodoFunction()
 		var filteredarray=inputValue.filter(function(date1){
 		return((new Date(date1.startDate)).getDate() === (new Date(filterdate)).getDate())
 		})
-		console.log(filteredarray);
 		todopageInDisplayMode(filteredarray,userid);
 	}
 	else if(document.getElementById("filterDropdown").value === "byCategory")
@@ -138,6 +171,22 @@ function filterTodoFunction()
 				})
 		}
 		todopageInDisplayMode(filteredarray,userid);
+	}
+	else if(document.getElementById("filterDropdown").value === "isDone")
+	{
+		var filteredarray=inputValue.filter(function(category1){
+			return(category1.todoStatus === "isDone")
+			})	
+			todopageInDisplayMode(filteredarray,userid);
+
+	}
+	else if(document.getElementById("filterDropdown").value === "isPending")
+	{
+		var filteredarray=inputValue.filter(function(category1){
+			return(category1.todoStatus === "isPending")
+			})
+			todopageInDisplayMode(filteredarray,userid);
+
 	}
 }
 function displaydatetext()
@@ -237,36 +286,46 @@ function enableDisplay()
 function deletetodos()
 {
 	var checkedarray=[];
-	var arraydelete=document.getElementsByName("deleteDiv");
 	userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userid=sessionStorage.getItem("userId");
+	var deleteDiv=document.getElementsByName("deleteDiv");
 	
-	for(var i=0;i<userRecordArray[userid].todoArray.length;i++)
+	for(var i=0;i<deleteDiv.length;i++)
 	{
-		if(document.getElementById("checkbox-"+i).checked === true)
+		var todoidstring=deleteDiv[i].id;
+		var todoid=todoidstring.split("-");
+		console.log(todoid[1]);
+		
+		 if(document.getElementById("checkbox-"+todoid[1]).checked === true)
 		{
-		//document.getElementById("todoCards").removeChild("display-"+i);
-		checkedarray.push(i);
-		}
-
+			
+		
+		checkedarray.push(todoid[1]);
+		} 
+		else
+		console.log(document.getElementById("checkbox-"+todoid[1]).checked);
+		
 	}
-	for(let count=checkedarray.length-1;count>=0;count--)
+for(let count=checkedarray.length-1;count>=0;count--)
 	{
-		userRecordArray[userid].todoArray.splice(checkedarray[count],1);
+		for(let j=0;j<userRecordArray[userid].todoArray.length;j++)
+		{
+		if(userRecordArray[userid].todoArray[j].todoID === checkedarray[count])
+		{
+		document.getElementById("display-"+todoid[1]).remove();
+		userRecordArray[userid].todoArray.splice(j,1);
+		}
+	}
 	}
 var todostringify=JSON.stringify(userRecordArray);
     localStorage.setItem("registeredUserRecord",todostringify);
-	window.location.reload();
+	
 	
 }
 
 
-function deleteSession()
-{
-	sessionStorage.removeItem("userId");
-	window.location.replace("loginpage.html");
-	
-}
+
+
 function editTodoItems(){
 				let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 				var userid=sessionStorage.getItem("userId");
@@ -304,12 +363,7 @@ function editTodoItems(){
 				
 					document.getElementById("saveEditedTodoItem").disabled=false;
 			   document.getElementById("editTodoItem").disabled=true;
-			   
-	
-				
-				
-				
-	}
+			   }
 
 	
 	function saveEditedTodoItem()
@@ -374,6 +428,7 @@ function validStartDate()
 	if((new Date(valueOfElement)).getDate()< today.getDate())
 	{
 		alert("Inavlid date:Start Date cannot be less than the current date");
+		document.getElementById("startDate").value="";
 		document.getElementById("startDate").focus();
 		return false;
 	}
@@ -384,7 +439,10 @@ function validEndDate(IdOfElement){
 	var valueOfEndDate=IdOfElement.value;
 	if((new Date(valueOfEndDate)).getDate()<(new Date(valueOfStartDate)).getDate())
 	{
-		alert(IdOfElement.id+"cannot be before Start Date");
+		alert("Please Set value of "+IdOfElement.id+" after the Start Date");
+		
+		document.getElementById("endDate").value="";
+
 		document.getElementById("endDate").focus();
 		return false;
 }
@@ -392,16 +450,34 @@ return true;
 }
 
 function changeStatusOfTodo(IdOfElement){
+	var strid=IdOfElement.id;
 	let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 				var userid=sessionStorage.getItem("userId");
+				var id=strid.split("-");
+				
 			if(IdOfElement.checked === true)
 			{
-			userRecordArray[userid].todoArray.todoStatus="isDone";
+			userRecordArray[userid].todoArray[id[1]].todoStatus="isDone";
 			}
 			else
 			{
-				userRecordArray[userid].todoArray.todoStatus="isPending";
+				userRecordArray[userid].todoArray[id[1]].todoStatus="isPending";
 			}
-			localStorage.setItem("registeredUserRecord",JSON.stringify(userRecordArray));
+			var tostring=JSON.stringify(userRecordArray);
+			localStorage.setItem("registeredUserRecord",tostring);
+			window.location.reload();
 			
+}
+function validReminderDate(IdOfElement)
+{
+	valueOfElement=IdOfElement.value;
+	var valueOfEndDate=document.getElementById("endDate").value;
+	if((new Date(valueOfEndDate)).getDate()>(new Date(valueOfEndDate)).getDate())
+	{
+		alert("Please Set value of "+IdOfElement.id+" before the End Date");
+
+		document.getElementById("endDate").focus();
+		return false;
+}
+return true;
 }

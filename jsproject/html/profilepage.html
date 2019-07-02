@@ -3,15 +3,17 @@
         <link rel="stylesheet" href="../css/profilepage.css"/>
         <link rel="stylesheet" href="../css/normalise.css"/>
         <link rel="stylesheet" href="../css/reset.css"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <script src="../js/validationtype.js"></script>
         <script src="../js/profilepage.js"></script>
+
         
     </head>
     <body onload="profileInDisabledMode();">
         <header>
             <div class="container">
                 <div class="logo">
-                <img src="../images/todo.png" height="100">
+                <img src="../images/todo1.jpg" height="100">
                 <h3>MY TODO APP</h3>
                 </div>
                 <div class="clear"></div>
@@ -23,13 +25,14 @@
 					<h3>Welcome</h3><span id="userName1"></span>
                     <a href="profilepage.html">My Profile</a>
                     <a href="mytodopage.html">My ToDo</a>
-                   <a href="loginpage.html">Logout</a>
+                    <a href="javascript:deleteSession();">Logout</a>
                 
             </div>
                 <div class="bodysection">
-					<div class="profiletable">
+					<form class="profiletable">
 					<div class="editSavebutton"><input type=button name=Edit id="Edit" value=Edit onclick="profileinEditmode();"><input type=button name="Save" id="Save" value=Save onclick="saveChangedData();"></div>
-					<img src="../images/deprofile.svg" id="userpic" height=100px;>
+                   <div class=imagediv><img src="../images/deprofile.png" id="edituserpic" height=100px;> <i class="fas fa-edit" id="editicon"></i><input type=file  name="getnewimage" id=getnewimage onchange="editImage();"></div>
+                    
 					<div class="profileField"><label for="firstname">First Name</label><input type="text" name="firstname" id="Firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this);" ></div>  
 					<div class="profileField"><label for="lastname">Last Name</label><input type="text" name="lastname" id="Lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this);" ></div> 
 					
@@ -43,7 +46,7 @@
 					<div class="profileField"><label for="pincode">Pincode</label><input type="number" name="Pincode" id="Pincode" placeholder="Pincode"onfocusout="validatepincode();" ></div>
 					<div class="profileField"><label for="email">Email Address</label><input type="text" name="Emailid" id="Emailid" placeholder="Email Address"></div>
                    
-                 </div>
+               </form>
 					
 					</div>
                    
@@ -53,3 +56,4 @@
             </div>
         </div>
         </body>
+        </html>

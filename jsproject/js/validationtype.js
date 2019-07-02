@@ -12,18 +12,19 @@ function validateonlycharacters(Idofelement) {
   
     alert(Idofelement.id+" should only have characters");
     Idofelement.value="";
-    Idofelement.id.focus();
+    Idofelement.focus();
         return false;
     
 }
-function validateCharactersandDigit(id)
+function validateCharactersandDigit(idOfElement)
 {
-	alert("hii");
-	var valueOfElement=document.getElementById("id").value;
-	var patter=/^[a-zA-Z0-9]+$/;
-	if(!valueOfElement.match(pattern))
+	
+	var valueOfElement=idOfElement.value;
+	var pattern=/^[a-zA-Z0-9]+$/;
+	if(!valueOfElement.match(pattern) && (valueOfElement!== ""))
 	{
-		alert(id+"can contain only Alphabets and Digits");
+        alert(idOfElement.id+" can contain only Alphabets and Digits");
+        id.value="";
 		id.focus();
 		return false;
 	}
@@ -81,4 +82,11 @@ function usernameValidate(idOfElement)
         return true;
 
     }
+}
+
+function deleteSession()
+{
+	sessionStorage.removeItem("userId");
+	window.location.replace("loginpage.html");
+	
 }

@@ -6,36 +6,55 @@ function validatepincode()
     var pincode=document.getElementById("Pincode");
     var pincodevalue=pincode.value;
   
-    var pattern=/^[0-9]{6}$/;
+    var pattern=/^[0-9]+$/;
     if(pincodevalue == "")
-    {
-        alert("Pincode should only be digits");
-        pincode.value="";
-        pincode.id.focus();
-        return false;
-    }
+    return true;
     if(pincodevalue<0)
     {
         alert("Pincode cannot be negative");
-        pincode.value="";
-        pincode.id.focus();
+        document.getElementById("Pincode").value="";
+        pincode.focus();
         return false;
     }
-    if(pincodevalue.match(pattern)) 
+    if(!(pincodevalue.match(pattern))) 
     {
-      return true;
+        alert("Pincode should contain only Numbers");
+        document.getElementById("Pincode").value="";
+
+      return false;
     }
-    else
+    if((pincodevalue.length>0) && (pincodevalue.length<6))
     {
-        alert("Pincode should contain only numbers and length should be 6");
-        pincode.value="";
-        pincode.id.focus();
-    return false;
+        alert("Pincode length should be 6");
+        document.getElementById("Pincode").value="";
+        pincode.focus();
+        return false;
 
     }
+
  }
 
+function checknullValue()
+{
+    var firstName = document.getElementById("Firstname").value;
+    var lastName = document.getElementById("Lastname").value;
+/* var gender = document.getElementsByName("Gender").value; */
 
+var emailID=document.getElementById("Emailid").value;
+ var password=document.getElementById("setPassword").value;
+    if((firstName=="null")||(lastName=="")/* ||(gender.checked.value =="") */||(emailID =="")||(password==""))
+    {
+        document.getElementById("Firstname").style.border="2px solid red";
+        document.getElementById("Lastname").style.border="2px solid red"
+        document.getElementById("Emailid").style.border="2px solid red"
+        document.getElementById("setPassword").style.border="2px solid red"
+        alert("Please fill out all the mandatory Elements");
+        return false;
+
+ } 
+
+    storevalue();
+}
 function storevalue(){
 
 var firstName = document.getElementById("Firstname").value;
@@ -80,8 +99,8 @@ var streetName = document.getElementById("Streetname").value;
     var persondetailsinstring=JSON.stringify(arrayofuserobject);
    localStorage.setItem("registeredUserRecord",persondetailsinstring);
    sessionUserid=arrayofuserobject.length-1;
-   sessionStorage.setItem("sessionUserId",sessionUserid);
-   window.location="profilepage.html";
+   sessionStorage.setItem("userId",sessionUserid);
+   window.location.replace("../html/loginpage.html");
 
 
 
@@ -99,10 +118,8 @@ function changeProfilePicture()
         reader.onload = function () {
           
             var imgdata = reader.result;
-
-            document.getElementById("userpic").src=imgdata;
             sessionStorage.setItem("tempimgdata",imgdata);
-        
+            document.getElementById("userpic").src=sessionStorage.tempimgdata;
         };
     
         reader.onerror = function (error) {

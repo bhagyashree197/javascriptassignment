@@ -19,8 +19,9 @@ header .container
 
 header img{
     position:absolute;
-	height:150px;
-	top:0px;
+	height:100px;
+    top:0px;
+    border: 5px solid #1c5caf;
 
 }
 header h3
@@ -42,12 +43,12 @@ header h3
 }
 .formpage
 {
-    background-color: aquamarine;
+  
     margin-top:50px;
     padding:50px;
     width:500px;
     text-align: left;
-    background-color:rgba(10, 124, 13, 0.4);
+    background-color:rgba(5, 137, 255, 0.4);
     display: inline-block;
     text-align: left;
 }
