@@ -90,3 +90,16 @@ function deleteSession()
 	window.location.replace("loginpage.html");
 	
 }
+function validatePassword(idOfElement)
+{
+    var password=idOfElement.value;
+    
+    var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    if(!password.match(pattern))
+    {
+   
+        alert("1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ");
+        idOfElement.value="";
+        return false;
+    }
+}

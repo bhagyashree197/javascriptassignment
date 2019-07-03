@@ -50,7 +50,7 @@
             <input type="file" name="profilepic" id="profilepic" onchange="changeProfilePicture();"> 
             <hr>
             <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><input type="text" name="Emailid" id="Emailid" placeholder="Email Address" onfocusout=" usernameValidate(this)" required  ></div>
-                <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><input type="password" name="setPassword" id="setPassword" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet"></div>
+                <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><input type="password" name="setPassword" id="setPassword" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet" onfocusout=validatePassword(this);></div>
             <a href="loginpage.html"><input type="button" name="backtologin" value="Back to Login Page"></a>
             <input type="button" name="register" value="Register" onclick="checknullValue();" >
 
