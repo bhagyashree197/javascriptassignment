@@ -3,6 +3,7 @@
         <link rel="stylesheet" href="../css/registration.css"/>
         <link rel="stylesheet" href="../css/normalise.css"/>
         <link rel="stylesheet" href="../css/reset.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../js/validationtype.js"></script>
         <script src="../js/registration.js"></script>
         
@@ -26,8 +27,8 @@
             <hr>
         
             
-            <input type="text" name="firstname" id="Firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this);">  
-            <input type="text" name="lastname" id="Lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this);"> 
+           <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:3px;"></i><input type="text" name="firstname" id="Firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this);"> </div>
+           <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:0px; top:0px;"></i><input type="text" name="lastname" id="Lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this);"></div>
               
            
       
@@ -48,8 +49,8 @@
             <img src="../images/deprofile.png"  id="userpic" height=100px;>
             <input type="file" name="profilepic" id="profilepic" onchange="changeProfilePicture();"> 
             <hr>
-            <input type="text" name="Emailid" id="Emailid" placeholder="Email Address" onfocusout=" usernameValidate(this)" required  >
-            <input type="password" name="setPassword" id="setPassword" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet">
+            <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><input type="text" name="Emailid" id="Emailid" placeholder="Email Address" onfocusout=" usernameValidate(this)" required  ></div>
+                <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><input type="password" name="setPassword" id="setPassword" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet"></div>
             <a href="loginpage.html"><input type="button" name="backtologin" value="Back to Login Page"></a>
             <input type="button" name="register" value="Register" onclick="checknullValue();" >
 

@@ -31,15 +31,13 @@ function profileInDisabledMode()
 	Emailid.value=arrayUserRecord[userId].emailID;
 	document.getElementById("edituserpic").src=arrayUserRecord[userId].image;
 }
-
 function profileinEditmode()
 {
-	document.getElementById("Edit").disabled=true;
-		document.getElementById("Male").disabled=false;
+	
+  	document.getElementById("Edit").disabled=true;
+	document.getElementById("Male").disabled=false;
 	document.getElementById("Female").disabled=false;
 	document.getElementById("Other").disabled=false;
-	
-	
 	document.getElementById("Save").disabled=false;
 	document.getElementById("Firstname").disabled=false;
 	document.getElementById("Lastname").disabled=false;
@@ -49,19 +47,28 @@ function profileinEditmode()
 	document.getElementById("Countryname").disabled=false;
 	document.getElementById("Cityname").disabled=false;
 	document.getElementById("getnewimage").disabled=false;
-		 
-		var firstName = document.getElementById("Firstname");
-		var lastName = document.getElementById("Lastname");
-		var streetName = document.getElementById("Streetname");
-		var cityName = document.getElementById("Cityname");
-		var stateName = document.getElementById("Statename");
-		var countryName = document.getElementById("Countryname");
-		var pincode = document.getElementById("Pincode");
-	
-  
 }
+
+
+
 function saveChangedData()
 {
+	var firstName = document.getElementById("Firstname").value;
+    var lastName = document.getElementById("Lastname").value;
+/* var gender = document.getElementsByName("Gender").value; */
+	if((firstName=="")||(lastName==""))
+    {
+
+        document.getElementById("Firstname").style.border="2px solid red";
+        document.getElementById("Lastname").style.border="2px solid red";
+       
+        alert("Please fill out all the mandatory Elements");
+		return false;
+	}
+	else
+	{
+		document.getElementById("Firstname").style.border="";
+        document.getElementById("Lastname").style.border="";
 	var userId=sessionStorage.getItem("userId");
 	var firstName = document.getElementById("Firstname").value;
 	var lastName = document.getElementById("Lastname").value;
@@ -74,10 +81,8 @@ function saveChangedData()
 	var Gender = document.querySelector('input[name="Gender"]:checked').value;
 	var password=userArrayRecord[userId].password;
 	var emailID=userArrayRecord[userId].emailID;
-	
 	var obj=new Object();
-  
-	obj.firstName=firstName;
+  obj.firstName=firstName;
   obj.lastName=lastName;
   obj.Gender=Gender;
    obj.streetName=streetName;
@@ -87,8 +92,8 @@ function saveChangedData()
   obj.pincode=pincode;
   obj.emailID=emailID;
   obj.password=password;
-obj.todoArray=userArrayRecord[userId].todoArray;
-obj.image=userArrayRecord[userId].image;
+	obj.todoArray=userArrayRecord[userId].todoArray;
+	obj.image=userArrayRecord[userId].image;
 	
 	userArrayRecord[userId]=obj;
 	var persondetailsinstring=JSON.stringify(userArrayRecord);
@@ -96,10 +101,14 @@ obj.image=userArrayRecord[userId].image;
 
 	 disableTextbox();
    
-
+	}
 }
+
 function disableTextbox()
 {
+	
+       
+
 	document.getElementById("getnewimage").disabled=true;
 	document.getElementById("Edit").disabled=false;
 	document.getElementById("Save").disabled=true;
@@ -117,15 +126,7 @@ function disableTextbox()
 	
 	
 }
-/* unction getnewfile()
-{
-  document.getElementById("editicon").onclick(invokeFileButton());
-}
- function invokeFileButton()
-  {
-	  document.getElementById("getnewimage").click();
-	  document.getElementById("getnewimage").onchange(editImage()); 
-} */
+
 
 
 function editImage()

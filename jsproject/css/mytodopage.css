@@ -137,6 +137,7 @@ header h3
     }
     .todoItem
   {
+      position:relative;
       display:inline-block;
       width:40%;
       margin:20px 0px;
@@ -145,6 +146,7 @@ header h3
   .todoItem1
   {
       display:block;
+      position:relative;
       margin:20px 0px;
   }
 textarea
@@ -196,7 +198,7 @@ textarea
 	  display:inline-block;
 	  height:30px;
 	  text-align:center;
-	  width:300px;
+	  width:250px;
 	  
   }
   
@@ -227,15 +229,15 @@ textarea
 	.filterTodoClass
 	{
         text-align:center;
-	
-		padding:10px;
+	    padding:10px;
 		background-color:black;
 	}
 	#filterDropdown
 	{
-		width:100px;
-		height:30px;
-		border-radius:20px;
+		width:120px;
+        height:30px;
+        
+		border-radius:10px;
 		margin-left:10px;
     }
     .filterdiv
@@ -248,14 +250,20 @@ textarea
         margin-left:0px;
         background-color: aliceblue;
     }
-    #filterdate
+    #filterdate,#filterdaterange,#filtercategory
     {
         display:inline-block;
       
 	  height:30px;
 	  text-align:center;
-	  border-radius:20px;	
-      width:200px;
+	  border-radius:10px;	
+      width:150px;
+    }
+    #filterdatelabel,#toLabel
+    {
+        color:white;
+        font-size:15px;
+        margin-right:5px;
     }
     
     .todoDisplayclass
@@ -320,8 +328,8 @@ textarea
   .isLate{
   
     background-color:rgba(232, 237, 229, 0.3);
-    border:2px solid red;
-    box-shadow: 3px 3px red;
+    border:2px solid rgb(219, 85, 85);
+    box-shadow: 3px 3px rgb(219, 85, 85);
     }
     .isDonetodo{
         
@@ -329,4 +337,38 @@ textarea
             border:2px solid green;
             box-shadow: 3px 3px green;
             
+    }
+    .todocolor
+    {
+        padding:5px;
+        background-color: rgb(155, 151, 151);
+        margin-top:5px;
+    }
+    #redspan,#greenspan
+    {
+        margin-left:140px;
+        font-size: 20px;
+    }
+    .redcolor
+    {
+        margin-left:10px;
+        
+        height:20px;
+        width:20px;
+        background-color:rgb(219, 85, 85); 
+        display:inline-block;
+    }
+    .greencolor
+    {
+        margin-left:10px;
+        height:20px;
+        width:20px;
+        background-color:green; 
+        display:inline-block; 
+    }
+    .todoItem i,.todoItem1 i{
+        font-size:8px;
+
+        left:-8px;
+        
     }

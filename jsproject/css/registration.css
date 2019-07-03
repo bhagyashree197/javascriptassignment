@@ -52,15 +52,31 @@ header h3
     display: inline-block;
     text-align: left;
 }
-#firstname,#cityname,#countryname,#username
+#firstname,#username
+{
+    margin:15px 0px;
+    width:100%;
+    padding-left:10px;
+    margin-right:5px;
+
+}
+#cityname,#countryname
 {
     margin:15px 0px;
     width:48%;
     padding-left:10px;
     margin-right:5px;
-    display: inline-block;
+
 }
-#lastname,#statename,#pincode,#password
+#lastname,#password
+{
+    padding-left:10px;
+    margin:10px 0px;
+    width:100%;
+    margin-left:10px;
+    display: inline-block; 
+}
+#statename,#pincode
 {
     padding-left:10px;
     margin:10px 0px;
@@ -132,16 +148,19 @@ vertical-align: center;
 {
  text-decoration: none;
 }
-/* #statename,#pincode
+.mainsection input[type=text]
 {
-    width:48%;
-    margin-left:5px;
-    display: inline-block;
+    position:relative;
 }
-#cityname,#countryname
+.mainsection i{
+    font-size:8px;
+    top:-10px;
+    left:-8px;
+    
+}
+.fielddiv
 {
-    width:48%;
-    margin-right:10px;
+    position:relative;
     display: inline-block;
-
-} */
+    width:48%;
+}

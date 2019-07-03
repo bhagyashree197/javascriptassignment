@@ -5,6 +5,7 @@
         <link rel="stylesheet" href="../css/reset.css"/>
         <link rel="stylesheet" href="../css/mytodopage.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../js/validationtype.js"></script>
         <script src="../js/mytodo.js"></script>
         
@@ -37,20 +38,20 @@
             <div id="formpage">
                 
                     <h1>MY TODO</h1>
-                    <div class="todoItem1"><label for="Title">Title</label> <input type="text" id="Title" name="Title" required onfocusout="validateCharactersandDigit(this);"  ></div>
+                    <div class="todoItem1"><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="Title">Title</label> <input type="text" id="Title" name="Title" required onfocusout="validateCharactersandDigit(this);"  ></div>
                     <div class="todoItem1"><label for="Category">Category</label>
                     <select name="categorytype" id="categorytype">
                         <option value="Office">Office</option>
                         <option value="Social">Social</option>
                         <option value="Home">Personal</option>
                     </select></div>
-                    <div class="todoItem"><label for="StartDatelabel">Start Date</label><input type=date name=startDate id="startDate" onfocusout="validStartDate();" required></div>
-                    <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate onfocusout="validEndDate(this);"></div>
+                    <div class="todoItem" ><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="StartDatelabel">Start Date</label><input type=date name=startDate id="startDate" onchange="validStartDate();" required></div>
+                    <div class="todoItem"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate onchange="validEndDate(this);"></div>
                     <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=radio name=setReminder id="setReminder" onchange="enabletextbox();"></div>
                    <div class="todoItem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label><input type=date name=reminderdate id="reminderdate" disabled style="display:none;"onfocusout="validReminderDate(this);""></div>
                     <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label><input type="radio" name="makeTodoPublic" id="makeTodoPublic"></div>
                     <div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="todoDescription" id="todoDescription"></textarea></div>
-                  <input type=button name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="addTodoItems();">
+                  <input type=button name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="validateitems();">
                   <input type=button name="goBackToDisplayPage" id="goBackToDisplayPage" value="Go Back To Display Page" onclick="enableDisplay();">
 
             </div>
@@ -60,12 +61,14 @@
 				<input type=text name="searchTodo" id="searchTodo" placeholder="Type the title of Todo to search" onkeyup="searchTodoByName();">
                 <select id="filterDropdown" onchange="displaydatetext();">
 				<option value="Filter" selected>No Filter</option>
-				<option value="byDate">By Date</option>
+                <option value="byDate">By Date</option>
+                <option value="byDateRange">By Date Range</option>
                 <option value="byCategory">By Category</option>
                 <option value="isDone">Is Done</option>
                 <option value="isPending">Is Pending</option>
                 </select>
-               <input type=date name=filterdate id=filterdate onchange="filterTodoFunction();"">
+              <label for="filterdate" id=filterdatelabel>From</label> <input type=date name=filterdate id=filterdate onchange="filterTodoFunction();">
+               <label for="filterdaterange" id="toLabel">To</label><input type=date name=fiterdaterange id=filterdaterange onchange="filterTodoFunction();">
                <select id=filtercategory onchange="filterTodoFunction();">
                     <option value=Category>Category</option>
                    <option value=Office>Office</option>
@@ -74,6 +77,12 @@
                 </select>
                
             </div>
+            <div class="todocolor">
+                <label for="redspan" id="redspan">OverDue To-Dos</label><div class="redcolor"></div>
+                    <label for="greenspan" id="greenspan">Completed To-Dos</label><div class="greencolor"></div>
+            </div>
+
+
            <div id="todoCards"></div>
             </div> 
 			<div id="registeredUserForm">

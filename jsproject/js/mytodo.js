@@ -1,8 +1,21 @@
+function validateitems()
+{
+	var title=document.getElementById("Title").value;
+	var startDate=document.getElementById("startDate").value;
+	if(title == " " || startDate=="")
+	{
+		document.getElementById("Title").style.border="2px solid red";
+        document.getElementById("startDate").style.border="2px solid red"
+		alert("Please Fill All The Mandatory Fields");
+		return false;
+	}
+	addTodoItems();
+}
+
+
 function addTodoItems()
 {
-
-  
-   document.getElementById("MytodopageClass").style.display="none";
+	document.getElementById("MytodopageClass").style.display="none";
 var title=document.getElementById("Title").value;
 document.getElementById("registeredUserForm").style.display="none";
 var categorytype=document.getElementById("categorytype").value;
@@ -77,7 +90,7 @@ function todopageInDisplayMode(inputValue,userid)
 		var current=new Date();
 		if(todoStatus == "isPending")
 		{
-			if((new Date(endDate)).getDate()<current.getDate())
+			if((new Date(endDate)).getTime()<current.getTime())
 			{
 			var classname="isLate";
 			}
@@ -131,23 +144,26 @@ function filterTodoFunction()
 	{
 		todopageInDisplayMode(inputValue,userid);
 		document.getElementById("filterdate").style.display="none";
+		document.getElementById("filterdaterange").style.display="none";
 		document.getElementById("filtercategory").style.display="none";
+		document.getElementById("filterdatelabel").style.display="none";
+		document.getElementById("toLabel").style.display="none"
 	}
 
 
 	 else if(document.getElementById("filterDropdown").value === "byDate")
 	{
-		
+		document.getElementById("filterdatelabel").style.display="none";
+	
 		var filterdate=document.getElementById("filterdate").value;
 		var filteredarray=inputValue.filter(function(date1){
-		return((new Date(date1.startDate)).getDate() === (new Date(filterdate)).getDate())
+		return((new Date(date1.startDate)).getTime() === (new Date(filterdate)).getTime())
 		})
 		todopageInDisplayMode(filteredarray,userid);
 	}
 	else if(document.getElementById("filterDropdown").value === "byCategory")
 	{
-		document.getElementById("filterdate").style.display="none";
-		document.getElementById("filtercategory").style.display="inline-block";
+	
 		if(document.getElementById("filtercategory").value ==="Category")
 		{
 			todopageInDisplayMode(inputValue,userid);
@@ -188,7 +204,19 @@ function filterTodoFunction()
 			todopageInDisplayMode(filteredarray,userid);
 
 	}
+	else if(document.getElementById("filterDropdown").value === "byDateRange")
+	{
+		
+		var startdate=document.getElementById("filterdate").value;
+		var enddate=document.getElementById("filterdaterange").value;
+		var filteredarray=inputValue.filter(function(date1){
+		return(((new Date(date1.startDate)).getTime()>=(new Date(startdate).getTime())) && ((new Date(date1.startDate)).getTime()<=(new Date(enddate).getTime())))
+	})
+	todopageInDisplayMode(filteredarray,userid);	
+	}
 }
+
+
 function displaydatetext()
 {
 	if(document.getElementById("filterDropdown").value === "byDate")
@@ -200,6 +228,17 @@ function displaydatetext()
 	{
 		document.getElementById("filterdate").style.display="none";
 		document.getElementById("filtercategory").style.display="inline-block";	
+		document.getElementById("filterdatelabel").style.display="none";
+		document.getElementById("toLabel").style.display="none";
+		document.getElementById("filterdaterange").style.display="none";
+	}
+	else if(document.getElementById("filterDropdown").value === "byDateRange")
+	{
+		document.getElementById("filterdatelabel").style.display="inline-block";
+		document.getElementById("toLabel").style.display="inline-block";
+		document.getElementById("filterdaterange").style.display="inline-block";
+		document.getElementById("filterdate").style.display="inline-block";
+		document.getElementById("filtercategory").style.display="none";
 	}
 	else
 	{
@@ -285,21 +324,21 @@ function enableDisplay()
 }
 function deletetodos()
 {
-	var checkedarray=[];
+	let checkedarray=[];
 	userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userid=sessionStorage.getItem("userId");
 	var deleteDiv=document.getElementsByName("deleteDiv");
+	
 	
 	for(var i=0;i<deleteDiv.length;i++)
 	{
 		var todoidstring=deleteDiv[i].id;
 		var todoid=todoidstring.split("-");
-		console.log(todoid[1]);
 		
 		 if(document.getElementById("checkbox-"+todoid[1]).checked === true)
 		{
 			
-		
+			
 		checkedarray.push(todoid[1]);
 		} 
 		else
@@ -312,13 +351,15 @@ for(let count=checkedarray.length-1;count>=0;count--)
 		{
 		if(userRecordArray[userid].todoArray[j].todoID === checkedarray[count])
 		{
-		document.getElementById("display-"+todoid[1]).remove();
 		userRecordArray[userid].todoArray.splice(j,1);
+		console.log("checkedarray[count]",checkedarray[count]);
+		document.getElementById("display-"+checkedarray[count]).remove();
+		}
 		}
 	}
-	}
 var todostringify=JSON.stringify(userRecordArray);
-    localStorage.setItem("registeredUserRecord",todostringify);
+	localStorage.setItem("registeredUserRecord",todostringify);
+	
 	
 	
 }
@@ -423,31 +464,33 @@ function searchTodoByName()
 }
 function validStartDate()
 {
-	var valueOfElement=document.getElementById("startDate").value;
-	var today=new Date();
-	if((new Date(valueOfElement)).getDate()< today.getDate())
-	{
-		alert("Inavlid date:Start Date cannot be less than the current date");
-		document.getElementById("startDate").value="";
-		document.getElementById("startDate").focus();
-		return false;
-	}
-	return true;
+	var valueOfElement=new Date(document.getElementById("startDate").value);
+ let today=new Date();
+ if(valueOfElement.getTime() < today.getTime())
+ {
+ alert("Start Date Cannot be Before The Current Date");
+ document.getElementById("startDate").value="";
+ document.getElementById("startDate").focus();
+ return false;
+ }
 }
+
+
 function validEndDate(IdOfElement){
 	var valueOfStartDate=document.getElementById("startDate").value;
 	var valueOfEndDate=IdOfElement.value;
-	if((new Date(valueOfEndDate)).getDate()<(new Date(valueOfStartDate)).getDate())
+	let today=new Date();
+	if(((new Date(valueOfEndDate)).getTime()<(new Date(valueOfStartDate)).getTime()) || (new Date(valueOfEndDate)).getTime()< today.getTime())
 	{
-		alert("Please Set value of "+IdOfElement.id+" after the Start Date");
+		alert("Please Set value of "+IdOfElement.id+" after the Start Date and Current Date");
 		
 		document.getElementById("endDate").value="";
-
 		document.getElementById("endDate").focus();
 		return false;
 }
 return true;
 }
+
 
 function changeStatusOfTodo(IdOfElement){
 	var strid=IdOfElement.id;
@@ -472,7 +515,7 @@ function validReminderDate(IdOfElement)
 {
 	valueOfElement=IdOfElement.value;
 	var valueOfEndDate=document.getElementById("endDate").value;
-	if((new Date(valueOfEndDate)).getDate()>(new Date(valueOfEndDate)).getDate())
+	if((new Date(valueOfEndDate)).getTime()>(new Date(valueOfEndDate)).getTime())
 	{
 		alert("Please Set value of "+IdOfElement.id+" before the End Date");
 
