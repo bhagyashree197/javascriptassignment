@@ -30,6 +30,7 @@ function validateCharactersandDigit(idOfElement)
 	}
 	return true;
 }
+
 function usernameValidate(idOfElement)
 {
     let dummyVariable=0;
@@ -55,9 +56,7 @@ function usernameValidate(idOfElement)
                 break;
         }
     }
-    if(idOfElement.id=="Emailid")
-    {
-    if(dummyVariable===1) 
+  if(dummyVariable===1) 
     {
         alert("EmailID already Registered");
         idOfElement.value="";
@@ -66,22 +65,10 @@ function usernameValidate(idOfElement)
     }
     else
     {
-        
         return true;
     }
-    }
-    else if(idOfElement.id=="Emailaddress")
-    {
-        if(count=== userRecordArray.length) 
-        {
-            alert("EmailID not already Registered");
-            idOfElement.value="";
-            idOfElement.focus();
-            return false;
-        }
-        return true;
-
-    }
+    
+   
 }
 
 function deleteSession()
@@ -92,14 +79,15 @@ function deleteSession()
 }
 function validatePassword(idOfElement)
 {
-    var password=idOfElement.value;
-    
-    var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-    if(!password.match(pattern))
-    {
-   
-        alert("1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ");
-        idOfElement.value="";
-        return false;
-    }
+  var password=idOfElement.value;
+  var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+  if(password=="")
+  return true;
+  if(!password.match(pattern))
+  {
+      alert("1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ");
+      idOfElement.value="";
+      idOfElement.focus();      
+      return false;
+  }
 }

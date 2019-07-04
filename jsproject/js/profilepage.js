@@ -33,7 +33,8 @@ function profileInDisabledMode()
 }
 function profileinEditmode()
 {
-	
+	document.getElementById("Save").style.display="inline-block";
+	document.getElementById("Edit").style.display="none";
   	document.getElementById("Edit").disabled=true;
 	document.getElementById("Male").disabled=false;
 	document.getElementById("Female").disabled=false;
@@ -106,9 +107,8 @@ function saveChangedData()
 
 function disableTextbox()
 {
-	
-       
-
+	document.getElementById("Edit").style.display="inline-block";
+	document.getElementById("Save").style.display="none";
 	document.getElementById("getnewimage").disabled=true;
 	document.getElementById("Edit").disabled=false;
 	document.getElementById("Save").disabled=true;

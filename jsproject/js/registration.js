@@ -1,6 +1,3 @@
-
-
-
 function validatepincode()
 {
     var pincode=document.getElementById("Pincode");
@@ -68,11 +65,7 @@ var streetName = document.getElementById("Streetname").value;
  var pincode = document.getElementById("Pincode").value;
  var emailID=document.getElementById("Emailid").value;
  var password=document.getElementById("setPassword").value;
- 
-
- 
-  var obj=new Object();
-  
+ var obj=new Object();
   obj.firstName=firstName;
   obj.lastName=lastName
   obj.Gender=gender;
@@ -86,9 +79,7 @@ var streetName = document.getElementById("Streetname").value;
   obj.todoArray=[];
   obj.image=sessionStorage.getItem("tempimgdata");
   sessionStorage.removeItem("tempimgdata");
-
-
-  var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
+var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
    
     if(arrayofuserobject === null)
     {

@@ -30,21 +30,21 @@
             </div>
                 <div class="bodysection">
 					<form class="profiletable">
-					<div class="editSavebutton"><input type=button name=Edit id="Edit" value=Edit onclick="profileinEditmode();"><input type=button name="Save" id="Save" value=Save onclick="saveChangedData();"></div>
-                   <div class=imagediv><img src="../images/deprofile.png" id="edituserpic" height=100px;> <i class="fas fa-edit" id="editicon"></i><input type=file  name="getnewimage" id=getnewimage onchange="editImage();"></div>
+					<div class="editSavebutton"><input type=button name=Edit id="Edit" value=Edit onclick="profileinEditmode();"><input type=button name="Save" id="Save" value=Save onclick="saveChangedData();"/></div>
+                   <div class=imagediv><img src="../images/deprofile.png" id="edituserpic" height=100px;> <i class="fas fa-edit" id="editicon"></i><input type=file  name="getnewimage" id=getnewimage onchange="editImage();"/></div>
                     
-					<div class="profileField"><label for="firstname">First Name</label><input type="text" name="firstname" id="Firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this);" ></div>  
-					<div class="profileField"><label for="lastname">Last Name</label><input type="text" name="lastname" id="Lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this);" ></div> 
+					<div class="profileField"><label for="firstname">First Name</label><input type="text" name="firstname" id="Firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this);"/></div>  
+					<div class="profileField"><label for="lastname">Last Name</label><input type="text" name="lastname" id="Lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this);"/></div> 
 					
                <div class="profileField"> <input type="radio" name="Gender" id="Male" value="Male" ><label>Male</label>
-                <input type="radio" name="Gender" id="Female" value="Female"><label>Female</label>
-                <input type="radio" name="Gender" id="Other" value="Other"><label>Other</label></div>
-					<div class="profileField"><label for="streetname">Street Name</label><input type="text" name="streetname" id="Streetname" placeholder="Plot No/ Building name/ Street Name"></div>
-					<div class="profileField"><label for="cityname">City Name</label><input type="text" name="cityname" id="Cityname" placeholder="City" onfocusout="validateonlycharacters(this);"  ></div>
-					<div class="profileField"><label for="statename">State Name</label><input type="text" name="statename" id="Statename" placeholder="State" onfocusout="validateonlycharacters(this);" ></div>
+                <input type="radio" name="Gender" id="Female" value="Female"/><label>Female</label>
+                <input type="radio" name="Gender" id="Other" value="Other"/><label>Other</label></div>
+					<div class="profileField"><label for="streetname">Street Name</label><input type="text" name="streetname" id="Streetname" placeholder="Plot No/ Building name/ Street Name"/></div>
+					<div class="profileField"><label for="cityname">City Name</label><input type="text" name="cityname" id="Cityname" placeholder="City" onfocusout="validateonlycharacters(this);"/></div>
+					<div class="profileField"><label for="statename">State Name</label><input type="text" name="statename" id="Statename" placeholder="State" onfocusout="validateonlycharacters(this);"/></div>
 					<div class="profileField"><label for="statename">Country Name</label><input type="text" name="countryname" id="Countryname" placeholder="Country" onfocusout="validateonlycharacters(this);"></div>
-					<div class="profileField"><label for="pincode">Pincode</label><input type="number" name="Pincode" id="Pincode" placeholder="Pincode"onfocusout="validatepincode();" ></div>
-					<div class="profileField"><label for="email">Email Address</label><input type="text" name="Emailid" id="Emailid" placeholder="Email Address"></div>
+					<div class="profileField"><label for="pincode">Pincode</label><input type="number" name="Pincode" id="Pincode" placeholder="Pincode"onfocusout="validatepincode();"/></div>
+					<div class="profileField"><label for="email">Email Address</label><input type="text" name="Emailid" id="Emailid" placeholder="Email Address"/></div>
                    
                </form>
 					

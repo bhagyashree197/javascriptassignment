@@ -1,0 +1,82 @@
+Nice work Bhagyashree!!!
+
+Your assignment is not quite ready. But don't fret.
+We would like to see your re-submission after making the changes.
+Follow below Priority sequence:
+
+    Function
+    Logical
+    UI
+
+=======================================
+Need Improvements
+[A] Login & Register
+
+UI
+1. Email & password should be along with first & last name.
+
+Validation
+1. Login page should have validation once use click on submit without any inputs.
+
+CSS
+1. Submit buttons must have cursor-pointer
+
+Code
+1. Fix Needed: <a> <input/></a>. Use best Practice
+[B] Todo
+
+    Edit page, there is no meaning to enable/show save button if task is not in edit mode.
+
+UI
+1. text-align should be left
+2. Set reminder, make todo public both must be able to toggle.
+
+Validation
+1. Todo: reminder date should in future.
+2. Date range must be able to select start date as current date.
+3. Edit todo must have all validations. Title can not be empty in either of the case.
+
+CSS
+1. Description focus should be handled.
+2. List of task has UI issue with title
+
+=====
+[C] General:
+
+    A form should also been submitted via Keyboard Enter kye press event.
+    On login, user should be redirected to todo list.
+    Please fix console errors
+    One could not see mytodopage.html and profilepage.html without login. Similarly, one could not visit login page once user is in session.
+    Input field should have proper spacing (padding). Ref: Create Todo page
+    avoid unnecessary variable declaration in code.
+    Missing reusable functions, avoid lengthy function (learn more about single responsibility and open closed principal).
+    Please refer the below youtube chanel for writing clean code
+    https://www.youtube.com/watch?v=b9c5GmmS7ks&list=PLWKjhJtqVAbkK24EaPurzMq0-kw5U9pJh
+    Code alignment & Formatting MUST BE proper (HTML/JS/CSS)
+    eliminate extra lines and spaces
+    Follow naming convention for css class declaration & <input> name declaration
+    You can use other query selector for DOM manipulation other than getElementById in different cases.
+
+=====
+Best Practice:
+
+    Password should store in encrypted
+    Try to use es6 features in code.
+
+====
+Excellent Advance Points
+
+====
+
+    User must be able to filter/search through list Todo items on the basis of
+    Date range
+    Categories selected
+    isDone status
+    isPending ( due date greater than current )
+    => It would be great if you have applied all filler all together
+
+    Clear filter expected on task
+    => There is no way to clear filter once you apply the category filter without manual refreshing page.
+
+    You can use focus/blur/change events for validation\
+

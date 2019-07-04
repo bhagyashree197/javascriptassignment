@@ -52,7 +52,13 @@ header h3
     display: inline-block;
     text-align: left;
 }
-#firstname,#username
+.fielddiv
+{
+    position:relative;
+    display: inline-block;
+    width:48%;
+}
+#firstname,#Emailid
 {
     margin:15px 0px;
     width:100%;
@@ -68,7 +74,7 @@ header h3
     margin-right:5px;
 
 }
-#lastname,#password
+#lastname,#setPassword
 {
     padding-left:10px;
     margin:10px 0px;
@@ -143,6 +149,7 @@ vertical-align: center;
     background-color: black;
     border-radius: 15px;
     color:white;
+    cursor:pointer;
 }
 .formpage  a
 {
@@ -157,10 +164,4 @@ vertical-align: center;
     top:-10px;
     left:-8px;
     
-}
-.fielddiv
-{
-    position:relative;
-    display: inline-block;
-    width:48%;
 }

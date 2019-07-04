@@ -11,7 +11,19 @@ function validateitems()
 	}
 	addTodoItems();
 }
+function clickStatus(IdOfElement)
+{
+	var id=IdOfElement.id;
+	alert(id);
+	if(document.getElementById(id).checked){
+		document.getElementById(id).checked=false;
+	}
+	else
+	{
+		document.getElementById(id).checked=true;
+	}
 
+}
 
 function addTodoItems()
 {
@@ -23,7 +35,7 @@ var startDate=document.getElementById("startDate").value;
 var endDate=document.getElementById("endDate").value;
 var setReminder=document.getElementById("setReminder").value;
 var reminderdate=document.getElementById("reminderdate").value;
-var makeTodoPublic=document.getElementById("makeTodoPublic").value;
+var makeToDoPublic= document.querySelector('input[name="makeTodoPublic"]:checked').value;
 var todoDescription=document.getElementById("todoDescription").value;
 var userid=sessionStorage.getItem("userId");
 let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
@@ -48,7 +60,7 @@ obj.startDate=startDate;
 obj.endDate=endDate;
 obj.setReminder=setReminder;
 obj.reminderDate=reminderdate;
-obj.makeTodoPublic=makeTodoPublic;
+obj.makeTodoPublic=makeToDoPublic;
 obj.todoDescription=todoDescription;
 obj.todoStatus="isPending";
 arrayUserRecord[userid].todoArray.push(obj);

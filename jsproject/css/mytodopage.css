@@ -344,6 +344,10 @@ textarea
         background-color: rgb(155, 151, 151);
         margin-top:5px;
     }
+    .publiclabel
+    {
+        margin-left:20px;
+    }
     #redspan,#greenspan
     {
         margin-left:140px;
