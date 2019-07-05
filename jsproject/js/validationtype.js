@@ -1,6 +1,6 @@
 	
-function validateonlycharacters(Idofelement) {
-   
+function validateonlycharacters(Idofelement, spanId) {
+ 
     let Valueofelement = Idofelement.value;
    
     let pattern=/^[a-zA-z]+$/;
@@ -9,29 +9,30 @@ function validateonlycharacters(Idofelement) {
      
     return true;
     }
-  
-    alert(Idofelement.id+" should only have characters");
+    document.getElementById(spanId).style.display="inline-block";
+    document.getElementById(spanId).innerHTML= "Should only have characters!!";
+   
     Idofelement.value="";
     Idofelement.focus();
         return false;
     
 }
-function validateCharactersandDigit(idOfElement)
+function validateCharactersandDigit(idOfElement,spanid)
 {
 	
 	var valueOfElement=idOfElement.value;
 	var pattern=/^[a-zA-Z0-9]+$/;
 	if(!valueOfElement.match(pattern) && (valueOfElement!== ""))
 	{
-        alert(idOfElement.id+" can contain only Alphabets and Digits");
-        id.value="";
-		id.focus();
+        document.getElementById(spanid).innerHTML=idOfElement.id+" can contain only Alphabets and Digits!!!";
+        idOfElement.value="";
+		idOfElement.focus();
 		return false;
 	}
 	return true;
 }
 
-function usernameValidate(idOfElement)
+function usernameValidate(idOfElement,spanId)
 {
     let dummyVariable=0;
     valueOfElement=idOfElement.value;
@@ -41,7 +42,7 @@ function usernameValidate(idOfElement)
         var pattern=/^[a-zA-Z0-9][\w-]*@[a-zA-Z0-9][\w-\.]*\.[a-zA-Z0-9][\w-]*$/;
         if(!valueOfElement.match(pattern))
         {
-        alert("Invalid Email Address");
+        document.getElementById(spanId)="Invalid Email Address";
         idOfElement.value="";
         //idOfElement.focus();
         return false;
@@ -58,7 +59,7 @@ function usernameValidate(idOfElement)
     }
   if(dummyVariable===1) 
     {
-        alert("EmailID already Registered");
+        document.getElementById(spanId)="EmailID already Registered";
         idOfElement.value="";
         idOfElement.id.focus();
         return false;
@@ -77,7 +78,7 @@ function deleteSession()
 	window.location.replace("loginpage.html");
 	
 }
-function validatePassword(idOfElement)
+function validatePassword(idOfElement,spanId)
 {
   var password=idOfElement.value;
   var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
@@ -85,7 +86,7 @@ function validatePassword(idOfElement)
   return true;
   if(!password.match(pattern))
   {
-      alert("1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ");
+      document.getElementById(spanId)="1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ";
       idOfElement.value="";
       idOfElement.focus();      
       return false;

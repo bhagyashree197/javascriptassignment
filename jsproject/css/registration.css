@@ -55,41 +55,29 @@ header h3
 .fielddiv
 {
     position:relative;
-    display: inline-block;
-    width:48%;
-}
-#firstname,#Emailid
-{
-    margin:15px 0px;
-    width:100%;
-    padding-left:10px;
-    margin-right:5px;
-
-}
-#cityname,#countryname
-{
-    margin:15px 0px;
-    width:48%;
-    padding-left:10px;
-    margin-right:5px;
-
-}
-#lastname,#setPassword
-{
-    padding-left:10px;
-    margin:10px 0px;
-    width:100%;
-    margin-left:10px;
-    display: inline-block; 
-}
-#statename,#pincode
-{
-    padding-left:10px;
-    margin:10px 0px;
+    float:left;
     width:48%;
     margin-left:10px;
-    display: inline-block; 
 }
+#firstname,#Emailid,#cityname,#countryname
+{
+    margin:15px 0px;
+    margin-bottom:5px;
+    width:100%;
+    padding-left:10px;
+
+}
+
+
+#lastname,#setPassword,#pincode,#statename
+{
+    padding-left:10px;
+    margin:15px 0px;
+    margin-bottom:5px;
+    width:100%;
+ 
+}
+
 #streetname
 {
     margin:15px 0px;
@@ -161,7 +149,18 @@ vertical-align: center;
 }
 .mainsection i{
     font-size:8px;
-    top:-10px;
-    left:-8px;
-    
+  
+}
+ p{
+     display:inline-block;
+     color:red;
+    font-size: 5px;
+    width:100%;
+    height:20px;
+    padding:10px;
+}
+
+#pagesubmission{
+    margin-bottom:20px;
+    color:red;
 }

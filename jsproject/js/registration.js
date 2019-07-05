@@ -1,5 +1,7 @@
+
 function validatepincode()
 {
+
     var pincode=document.getElementById("Pincode");
     var pincodevalue=pincode.value;
   
@@ -8,21 +10,27 @@ function validatepincode()
     return true;
     if(pincodevalue<0)
     {
-        alert("Pincode cannot be negative");
+        document.getElementById("pincodespan").style.display="inline-block";
+        document.getElementById("pincodespan").innerHTML="Pincode cannot be negative";
+        
         document.getElementById("Pincode").value="";
         pincode.focus();
         return false;
     }
     if(!(pincodevalue.match(pattern))) 
     {
-        alert("Pincode should contain only Numbers");
+        document.getElementById("pincodespan").style.display="inline-block";
+        document.getElementById("pincodespan").innerHTML="Pincode should contain only Numbers";
+        
         document.getElementById("Pincode").value="";
 
       return false;
     }
-    if((pincodevalue.length>0) && (pincodevalue.length<6))
+    if((pincodevalue.length>6))
     {
-        alert("Pincode length should be 6");
+        document.getElementById("pincodespan").style.display="inline-block";
+        document.getElementById("pincodespan").innerHTML="Pincode length should be 6";
+        
         document.getElementById("Pincode").value="";
         pincode.focus();
         return false;
@@ -30,6 +38,17 @@ function validatepincode()
     }
 
  }
+
+
+
+ (function(){
+     document.addEventListener('keypress', function(event) {
+    if (event.keyCode == 13) {
+        checknullValue();
+        
+    }})
+}());
+
 
 function checknullValue()
 {
@@ -45,12 +64,12 @@ var emailID=document.getElementById("Emailid").value;
         document.getElementById("Lastname").style.border="2px solid red"
         document.getElementById("Emailid").style.border="2px solid red"
         document.getElementById("setPassword").style.border="2px solid red"
-        alert("Please fill out all the mandatory Elements");
+        document.getElementById("pagesubmission").innerHTML="**Please fill out all the mandatory Fields**";
+        document.getElementById("pagesubmission").scrollIntoView({"behavior": 'smooth'})
         return false;
 
  } 
-
-    storevalue();
+  storevalue();
 }
 function storevalue(){
 
@@ -92,9 +111,6 @@ var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
    sessionUserid=arrayofuserobject.length-1;
    sessionStorage.setItem("userId",sessionUserid);
    window.location.replace("../html/loginpage.html");
-
-
-
 }
 function changeProfilePicture()
 {

@@ -1,5 +1,5 @@
 
-function validateCredentials()
+function validateCredentials(spanId)
 {
         var emailID=document.getElementById("Emailaddress");
         var password=document.getElementById("Password");
@@ -8,7 +8,7 @@ function validateCredentials()
         
         if(!emailID.value.match(pattern))
         {
-        alert("Invalid Email Address");
+        document.getElementById(spanId).innerHTML="Invalid Email Address";
         idOfElement.value="";
         //idOfElement.focus();
         return false;
@@ -21,7 +21,7 @@ function validateCredentials()
             }
             if(count=== getUserArray.length) 
             {
-                alert("EmailID not already Registered");
+                document.getElementById(spanId).innerHTML="EmailID not already Registered";
                 emailID.value="";
                 emailID.focus();
                 return false;
@@ -35,12 +35,12 @@ function validateCredentials()
                         if(getUserArray[count].password===password.value)
                         {
                         sessionStorage.setItem("userId",count);
-                        window.location.replace("profilepage.html");
+                        window.location.replace("mytodopage.html");
                         return true;
                         }
                         else
                         {
-                            alert("Invalid Credentials");
+                            document.getElementById(spanId).innerHTML="Invalid Credentials";
                             emailID.value="";
                             password.value="";
                             return false;
@@ -51,3 +51,11 @@ function validateCredentials()
             }
         }
 }
+
+(function(){
+    document.addEventListener('keypress', function(event) {
+   if (event.keyCode == 13) {
+       
+    validateCredentials('errorusername');
+   }})
+}());

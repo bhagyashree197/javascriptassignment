@@ -153,7 +153,8 @@ textarea
 {
     height:100px;
     width:100%;
-    border-radius:20px;
+    border-radius:10px;
+    padding:20px;
 }
 
     .todoItem label{
@@ -162,12 +163,13 @@ textarea
 }
     #formpage input[type="text"],#registeredUserForm input[type="text"]{
       display:inline-block;
-	  height:30px;
-	  text-align:center;
+      height:30px;
+      padding:20px;
+	  text-align:left;
 	  border-radius:20px;	
       width:600px;
   }
-  
+
   #formpage input[type="date"],#registeredUserForm input[type="date"]{
     display:inline-block;
     width:200px;
@@ -376,3 +378,11 @@ textarea
         left:-8px;
         
     }
+    p{
+        display:inline-block;
+        color:red;
+       font-size: 15px;
+       width:100%;
+       height:20px;
+       padding:10px;
+   }

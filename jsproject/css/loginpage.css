@@ -110,4 +110,10 @@ border-radius: 15px;
     border-radius:15%;
     display: inline-block;
 }
+#errorusername
+{
+    margin-top:10px;
+    color:red;
+    font-size: 20px;
+}
 

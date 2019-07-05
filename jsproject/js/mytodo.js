@@ -14,7 +14,7 @@ function validateitems()
 function clickStatus(IdOfElement)
 {
 	var id=IdOfElement.id;
-	alert(id);
+	
 	if(document.getElementById(id).checked){
 		document.getElementById(id).checked=false;
 	}
@@ -34,7 +34,7 @@ var categorytype=document.getElementById("categorytype").value;
 var startDate=document.getElementById("startDate").value;
 var endDate=document.getElementById("endDate").value;
 var setReminder=document.getElementById("setReminder").value;
-var reminderdate=document.getElementById("reminderdate").value;
+
 var makeToDoPublic= document.querySelector('input[name="makeTodoPublic"]:checked').value;
 var todoDescription=document.getElementById("todoDescription").value;
 var userid=sessionStorage.getItem("userId");
@@ -51,7 +51,14 @@ function makeid(length) {
    }
    return result;
 }
-
+if(setReminder === "on")
+{
+	var reminderdate=document.getElementById("reminderdate1").value;
+}
+else
+{
+	reminderdate=" ";
+}
 var obj=new Object();
 obj.todoID=todoID;
 obj.title=title;
@@ -141,6 +148,67 @@ function todopageInDisplayMode(inputValue,userid)
 			
 			
 }
+function disableFields(i){
+	sessionStorage.setItem("todoid",i);
+	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
+    var userid=sessionStorage.getItem("userId");
+	var todoid=sessionStorage.getItem("todoid");
+	  var inputValue = arrayUserRecord[userid].todoArray;
+				document.getElementById("formpage").style.display="none";
+				document.getElementById("MytodopageClass").style.display="none"; 
+				document.getElementById("registeredUserForm").style.display="block";
+				document.getElementById("editstartDate").value=inputValue[todoid].startDate;
+				document.getElementById("editTitle").value=inputValue[todoid].title;
+				var categoryId=document.getElementById("editcategorytype");
+				document.getElementById("editcategorytype").disabled=true;
+				for(let counter=0;counter<categoryId.options.length;counter++)
+				{
+							if(categoryId[counter].value === inputValue[todoid].categoryType)
+							{
+							document.getElementById("editcategorytype").options[counter].selected=true;
+							break;
+							}
+				}
+				if(inputValue[todoid].setReminder == "true")
+				{
+					document.getElementById("editsetReminder").checked =true;
+					document.getElementById("editreminderdate").style.display="inline-block";
+					document.getElementById("editreminderdate").disabled=true;
+
+
+				}
+				else
+				{
+					document.getElementById("editreminderdate").style.display="none";
+					document.getElementById("editreminderlabel").style.display="none";
+				}
+				
+			
+				document.getElementById("editendDate").value=inputValue[todoid].endDate;
+				
+				
+				var makepublicId=document.getElementsByName("editmakeTodoPublic");
+				makepublicId[0].disabled=true;
+				makepublicId[1].disabled=true;
+
+				if(inputValue[todoid].makeTodoPublic === "Yes")
+				makepublicId[0].checked=true;
+				else 
+				makepublicId[1].checked=true;
+
+				document.getElementById("edittodoDescription").value=inputValue[todoid].todoDescription;
+				document.getElementById("editstartDate").disabled=true;
+				document.getElementById("editTitle").disabled=true;
+				
+				document.getElementById("editendDate").disabled=true;
+				
+			
+				document.getElementById("edittodoDescription").disabled=true;
+					document.getElementById("saveEditedTodoItem").disabled=true;
+				document.getElementById("editTodoItem").disabled=false;
+			
+}
+
 function filterTodoFunction()
 {
 	
@@ -259,70 +327,37 @@ function displaydatetext()
 }	
 
 
-function disableFields(i){
-	sessionStorage.setItem("todoid",i);
-	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
-    var userid=sessionStorage.getItem("userId");
-	var todoid=sessionStorage.getItem("todoid");
-	  var inputValue = arrayUserRecord[userid].todoArray;
-				document.getElementById("formpage").style.display="none";
-				document.getElementById("MytodopageClass").style.display="none"; 
-				document.getElementById("registeredUserForm").style.display="block";
-				document.getElementById("editstartDate").value=inputValue[todoid].startDate;
-				document.getElementById("editTitle").value=inputValue[todoid].title;
-				var categoryId=document.getElementById("editcategorytype");
-				document.getElementById("editcategorytype").disabled=true;
-				for(let counter=0;counter<categoryId.options.length;counter++)
-				{
-							if(categoryId[counter].value === inputValue[todoid].categoryType)
-							{
-							document.getElementById("editcategorytype").options[counter].selected=true;
-							break;
-							}
-				}
-				
-				document.getElementById("editendDate").value=inputValue[todoid].endDate;
-				document.getElementById("editreminderdate").value=inputValue[todoid].reminderDate;
-				
-				if(inputValue[todoid].makeTodoPublic === "on")
-					document.getElementById("editmakeTodoPublic").checked=true;
-				else 
-					document.getElementById("editmakeTodoPublic").checked=false;
-				document.getElementById("edittodoDescription").value=inputValue[todoid].todoDescription;
-				document.getElementById("editstartDate").disabled=true;
-				document.getElementById("editTitle").disabled=true;
-				
-				document.getElementById("editendDate").disabled=true;
-				if(inputValue[todoid].setReminder === "on")
-				{
-					document.getElementById("editsetReminder").checked=true;
-					document.getElementById("editsetReminder").disabled=true;
-					document.getElementById("editreminderdate").disabled=true;
-				}
-				else 
-				{
-					document.getElementById("editsetReminder").checked=false;
-					document.getElementById("editsetReminder").disabled=true;
-					document.getElementById("editreminderdate").disabled=true;
-				}
-			
-				document.getElementById("editmakeTodoPublic").disabled=true;
-				document.getElementById("edittodoDescription").disabled=true;
-					document.getElementById("saveEditedTodoItem").disabled=true;
-				document.getElementById("editTodoItem").disabled=false;
-			
-}
 
-function enabletextbox()
+function enabletextbox(IdOfElement,IdOfremindertext)
 {
-	
-document.getElementById("reminderdate").disabled=false;
-document.getElementById("reminderdate").style.display="block";
-document.getElementById("reminderdatelabel").style.display="block";
+	id=IdOfElement.id;
+	if(document.getElementById(id).checked )
+	{
+document.getElementById(IdOfremindertext).disabled=false;
+document.getElementById(IdOfremindertext).style.display="block";
+document.getElementById(IdOfremindertext).style.display="block";
+}
+else
+{
+	document.getElementById(IdOfremindertext).disabled=true;
+	document.getElementById(IdOfremindertext).style.display="none";
+	document.getElementById(IdOfremindertext).style.display="none";	
+}
 }
 function enableForm()
 {
-    document.getElementById("formpage").style.display="block";
+	current=new Date();
+	let current_date = new Date();
+	let month = ('0' + (current_date.getMonth() + 1)).slice(-2);
+	let date = ('0' + current_date.getDate()).slice(-2);
+	let year = current_date.getFullYear();
+	current = year + '-' + month + '-' + date;
+
+	document.getElementById("formpage").style.display="block";
+	document.getElementById("startDate").min=current;
+	document.getElementById("endDate").min=current;
+	document.getElementById("reminderdate1").min=current;
+
     document.getElementById("MytodopageClass").style.display="none"; 
 	document.getElementById("registeredUserForm").style.display="none";
 }
@@ -394,24 +429,22 @@ function editTodoItems(){
 				for(let counter=0;counter<categoryId.options.length;counter++)
 				{
 							if(categoryId[counter].value==="inputValue[todoid].categoryType")
-									document.getElementById("editcategorytype").options.selected=true;
+							document.getElementById("editcategorytype").options.selected=true;
 				}
 				document.getElementById("editendDate").value=inputValue[todoid].endDate;
 				
-				document.getElementById("reminderdate").value=inputValue[todoid].reminderDate;
-				
-				
+				document.getElementById("editreminderdate").value=inputValue[todoid].reminderDate;
+				enabletextbox(document.getElementById("editsetReminder"),'editreminderdate');
 				document.getElementById("edittodoDescription").value=inputValue[todoid].todoDescription;
+				var makepublicId=document.getElementsByName("editmakeTodoPublic");
+				makepublicId[0].disabled=false;
+				makepublicId[1].disabled=false;
 				
 				document.getElementById("editsetReminder").disabled=false;
 				document.getElementById("editstartDate").disabled=false;
 				document.getElementById("editTitle").disabled=false;
 			document.getElementById("editcategorytype").disabled=false;
 				document.getElementById("editendDate").disabled=false;
-				document.getElementById("editreminderdate").disabled=false;
-			
-				document.getElementById("reminderdate").disabled=false;
-				document.getElementById("editmakeTodoPublic").disabled=false;
 				document.getElementById("edittodoDescription").disabled=false;
 				
 					document.getElementById("saveEditedTodoItem").disabled=false;
@@ -425,25 +458,33 @@ function editTodoItems(){
 				var userid=sessionStorage.getItem("userId");
 				var todoid=sessionStorage.getItem("todoid");
 		var title=document.getElementById("editTitle").value;
-	
+		var setReminder=document.getElementById("editsetReminder").checked;
+		if(setReminder === true)
+		{
+			var reminderdate=document.getElementById("editreminderdate").value;
+		}
+		else
+		{
+		var reminderdate="";
+		}
 		var categorytype=document.getElementById("editcategorytype").value;	
 		var startDate=document.getElementById("editstartDate").value;	
 		var endDate=document.getElementById("editendDate").value;
-		var setReminder=document.getElementById("editsetReminder");
-		 var reminderdate=document.getElementById("editreminderdate").value;
-       var makeTodoPublic=document.getElementById("editmakeTodoPublic").value;
+		
+		
+		 var makeToDoPublic= document.querySelector('input[name="editmakeTodoPublic"]:checked').value;
        var todoDescription=document.getElementById("edittodoDescription").value;
 			
 			
 				var obj=new Object();
-				
+				obj.todoID=userRecordArray[todoid].todoArray.todoID;
 				obj.title=title;
 				obj.categoryType=categorytype;
 				obj.startDate=startDate;
 				obj.endDate=endDate;
 				obj.setReminder=setReminder;
 				obj.reminderDate=reminderdate;
-				obj.makeTodoPublic=makeTodoPublic;
+				obj.makeTodoPublic=makeToDoPublic;
 				obj.todoDescription=todoDescription;
 				obj.todoStatus=userRecordArray[userid].todoArray.todoStatus;
 				userRecordArray[userid].todoArray[todoid]=obj;
@@ -451,6 +492,7 @@ function editTodoItems(){
 				localStorage.setItem("registeredUserRecord",stringUserRecord);
 				document.getElementById("MytodopageClass").style.display="block";
 				document.getElementById("formpage").style.display="none";
+				document.getElementById("editdateerrorspan").innerHTML=" ";
 				disableFields(todoid);
 }
 
@@ -474,34 +516,7 @@ function searchTodoByName()
 	todopageInDisplayMode(arrayValue,userid);
 }
 }
-function validStartDate()
-{
-	var valueOfElement=new Date(document.getElementById("startDate").value);
- let today=new Date();
- if(valueOfElement.getTime() < today.getTime())
- {
- alert("Start Date Cannot be Before The Current Date");
- document.getElementById("startDate").value="";
- document.getElementById("startDate").focus();
- return false;
- }
-}
 
-
-function validEndDate(IdOfElement){
-	var valueOfStartDate=document.getElementById("startDate").value;
-	var valueOfEndDate=IdOfElement.value;
-	let today=new Date();
-	if(((new Date(valueOfEndDate)).getTime()<(new Date(valueOfStartDate)).getTime()) || (new Date(valueOfEndDate)).getTime()< today.getTime())
-	{
-		alert("Please Set value of "+IdOfElement.id+" after the Start Date and Current Date");
-		
-		document.getElementById("endDate").value="";
-		document.getElementById("endDate").focus();
-		return false;
-}
-return true;
-}
 
 
 function changeStatusOfTodo(IdOfElement){
@@ -523,15 +538,35 @@ function changeStatusOfTodo(IdOfElement){
 			window.location.reload();
 			
 }
-function validReminderDate(IdOfElement)
-{
-	valueOfElement=IdOfElement.value;
-	var valueOfEndDate=document.getElementById("endDate").value;
-	if((new Date(valueOfEndDate)).getTime()>(new Date(valueOfEndDate)).getTime())
-	{
-		alert("Please Set value of "+IdOfElement.id+" before the End Date");
 
-		document.getElementById("endDate").focus();
+
+
+
+function validateDate(date1,date2,errorspan){
+	let d2string=[];
+	let d1string=[];
+		current=new Date();
+		d2=document.getElementById(date2).value;
+		d2string[1]=date2.substring(date2.length-4,date2.length);
+		d2string[0]=date2.substring(0,date2.length-4);
+		d2string=(d2string.join(" "));
+		console.log(d2string);
+		d2string= (d2string[0].toUpperCase()) + d2string.slice(1);
+
+	
+	var d1=document.getElementById(date1).value;
+	
+	d1string[1]=date1.substring(date1.length-4,date1.length);
+	d1string[0]=date1.substring(0,date1.length-4);
+	d1string=(d1string.join(" "));
+	console.log(d1string);
+	d1string= (d1string[0].toUpperCase()) + d1string.slice(1);
+	
+	if((new Date(d1)).getTime()<(new Date(d2)).getTime()) 
+	{
+		document.getElementById(errorspan).innerHTML=d1string+" Cannot be before "+d2string;
+		document.getElementById(date1).value="";
+		document.getElementById(date1).focus();
 		return false;
 }
 return true;
