@@ -1,55 +1,41 @@
-.container
-{
+.container{
     width:1170px;
     margin:0px auto;
-   
 }
-header .container
-{
+header .container{
     background-color:black;
 	position:relative;
 	width:1170px;
 	padding:20px;
     margin:0px auto;
 }
-
 header img{
     position:absolute;
 	height:100px;
     top:0px;
     border: 5px solid #1c5caf;
-
-
 }
-header h3
-{
+header h3{
     float:left;
     font-size:40px;
     color:white;
     margin-top:7px;
     margin-left:250px;
 }
-.logo
-{
+.logo{
     float:left;
-
 }
-.clear
-{
+.clear{
     clear:both;
 }
-.mainsection
-{
-  
-    height:500px;
+.mainsection{
+     height:500px;
 }
-.mainsection .container
-{
+.mainsection .container{
     margin-top:10px;
     
 }
-.verticalMenubar
-{
+.verticalMenubar{
 	position:fixed;
     background-color: black;
     padding:30px ;
@@ -62,327 +48,278 @@ header h3
     text-decoration: none;
     padding:10px 0px;
     color:white;
-   
 } 
-
 .verticalMenubar a:hover{
     background-color:white;
     color:#1c5caf;
 	 padding:10px ;
-	 }
-.bodysection
-{
+ }
+.bodysection{
     padding-right:35px;
     padding-top:100px;   
 	padding-left:305px;
     min-height:650px;
     width:71%;
-    background-color:rgba(232, 237, 229, 0.3);
+    background-color:rgba(121, 120, 120, 0.1);
 }
-.functionbutton
-{
+.functionbutton{
     background-color:rgba(0,0,0,0.5);
     right:70px;
     top:85px;
     position:fixed;
     padding: 10px;
-
 }
-.functionbutton  input[type=button]
-{
-    
-        width:60px;
-        margin-left:35px;
-        height:40px;
-        padding-left:5px;
-        padding-top:0px;
-        font-size:15px;
-        background-color: black;
-        border-radius: 15px;
-        color:white;
-        
-    }
-    .functionbutton a{
-
-        margin-left:30px;
-       background-color:black;
-         padding:15px;
-        display:inline-block;
-        
-        
-    }
-    .functionbutton i{
-        color:white;
-    }
-    hr{
-        
-        width:100%;
-
-    }
-    #formpage,#registeredUserForm
-    {
-        padding:20px;   
-        background-color:rgba(5, 137, 255, 0.4);
-        text-align:left;
-        
-   }
-    h1{
-        font-size:30px;
-        text-align: center;
-    }
-    #formpage label,#registeredUserForm label{
-        font-size: 20px;
-        margin-bottom:10px;
-        
-    }
-    .todoItem
-  {
-      position:relative;
-      display:inline-block;
-      width:40%;
-      margin:20px 0px;
-  }
-
-  .todoItem1
-  {
-      display:block;
-      position:relative;
-      margin:20px 0px;
-  }
-textarea
-{
+.functionbutton  input[type=button]{
+    width:60px;
+    margin-left:35px;
+    height:40px;
+    padding-left:5px;
+    padding-top:0px;
+    font-size:15px;
+    background-color: black;
+    border-radius: 15px;
+    color:white;
+}
+.functionbutton a{
+    margin-left:30px;
+    background-color:black;
+    padding:15px;
+    display:inline-block;
+}
+.functionbutton i{
+    color:white;
+}
+hr{
+    width:100%;
+}
+#formpage,#registeredUserForm{
+    padding:20px;   
+    background-color:rgba(5, 137, 255, 0.2);
+    text-align:left;
+}
+h1{
+    font-size:30px;
+    text-align: center;
+}
+#formpage label,#registeredUserForm label{
+    font-size: 20px;
+    margin-bottom:10px;
+}
+.todoItem{
+    position:relative;
+    display:inline-block;
+    width:40%;
+}
+.todoItem1{
+    display:block;
+    position:relative;
+    margin:20px 0px;
+}
+textarea{
+    margin-top:10px;
     height:100px;
     width:100%;
     border-radius:10px;
     padding:20px;
 }
 
-    .todoItem label{
-        font-size:20px;
-        display:block; 
+.todoItem label{
+    font-size:20px;
+    display:block; 
 }
-    #formpage input[type="text"],#registeredUserForm input[type="text"]{
-      display:inline-block;
-      height:30px;
-      padding:20px;
-	  text-align:left;
-	  border-radius:20px;	
-      width:600px;
-  }
+#formpage input[type="text"],#registeredUserForm input[type="text"]{
+    display:inline-block;
+    height:30px;
+    padding:20px;
+	text-align:left;
+	border-radius:20px;	
+    width:600px;
+}
 
-  #formpage input[type="date"],#registeredUserForm input[type="date"]{
+#formpage input[type="date"],#registeredUserForm input[type="date"]{
     display:inline-block;
     width:200px;
 }
- 
-  .categorytype
-  {
-      
-      width:200px;
-  }
-  #formpage  input[type=button],#registeredUserForm input[type="button"]
-{
-    
-        width:190px;
-        margin-left:35px;
-        height:40px;
-        padding-left:5px;
-        padding-top:0px;
-        font-size:15px;
-        background-color: black;
-        border-radius: 15px;
-        color:white;
+.categorytype{
+    width:200px;
+}
+#formpage  input[type=button],#registeredUserForm input[type="button"]{
+    width:190px;
+    margin-left:35px;
+    height:40px;
+    padding-left:5px;
+    padding-top:0px;
+    font-size:15px;
+    background-color: black;
+    border-radius: 15px;
+    color:white;
         
-    }
-	#searchTodo
-  {
-	
-	  display:inline-block;
-	  height:30px;
-	  text-align:center;
-	  width:250px;
-	  
-  }
-  
-	#searchTodoButton
-	{
-		width:190px;
-        margin-left:0px;
-        height:30px;
-        padding-left:5px;
-        padding-top:0px;
-        font-size:15px;
-        background-color: black;
-      
-        color:white;
-	}
-    #todoCards
-    {
-      
-        min-width:500px;
+}
+#searchTodo{
+	display:inline-block;
+	height:30px;
+	text-align:center;
+	width:250px;
+}
+#searchTodoButton{
+	width:190px;
+    margin-left:0px;
+    height:30px;
+    padding-left:5px;
+    padding-top:0px;
+    font-size:15px;
+    background-color: black;
+    color:white;
+}
+#todoCards{
+    min-width:500px;
         
-    }
-    #MytodopageClass h1
-    {
-        font-size:30px;
-            text-align: center;
-            margin-bottom:10px;
-    }
-	.filterTodoClass
-	{
-        text-align:center;
-	    padding:10px;
-		background-color:black;
-	}
-	#filterDropdown
-	{
-		width:120px;
-        height:30px;
-        
-		border-radius:10px;
-		margin-left:10px;
-    }
-    .filterdiv
-	{
-        margin-top:5px;
-        display:inline-block;
-        width:100px;
-		height:30px;
-		border-radius:20px;
-        margin-left:0px;
-        background-color: aliceblue;
-    }
-    #filterdate,#filterdaterange,#filtercategory
-    {
-        display:inline-block;
-      
-	  height:30px;
-	  text-align:center;
-	  border-radius:10px;	
-      width:150px;
-    }
-    #filterdatelabel,#toLabel
-    {
-        color:white;
-        font-size:15px;
-        margin-right:5px;
-    }
-    
-    .todoDisplayclass
-    {
-        width:200px;
-        height:200px;
-        background-color:rgba(232, 237, 229, 0.3);
-        border:2px solid #1c5caf;
-        box-shadow: 3px 3px #1c5caf;
-
-        margin-left:30px;
-        display: inline-block;
-        text-align: center;
-        padding:5px;
-        margin-top:25px;
-    }
-    .MytopageClass h1
-    {
-        text-align: center;
-    }
-    .todoDisplayclass h1{
-        font-size:25px;
-        margin-top:10px;
-        
-    }
-	.isDoneDiv h3
-	{
-		font-size:20px;
-        margin-top:10px;
-		display:inline-block;
-		margin-right:10px;;
-	}
-	.isDoneDiv input[type="checkbox"]
-	{
-		width:20px;
-		height:20px;
-		
-	}
-    .todoDisplayclass h3{
-        font-size:20px;
-        margin-top:10px;
-    }
-    .todoDisplayclass input[type=button]
-    {
-        width:120px;
-        margin-top:10px;
-        height:40px;
-        padding-left:5px;
-        padding-top:0px;
-        font-size:15px;
-        background-color: black;
-        border-radius: 15px;
-        color:white;
-        
-    }
-    #deleteDiv
-    {
-        vertical-align: top;
-        width:20px;
-        height:20px;
-    }
-  .isLate{
-  
+}
+#MytodopageClass h1{
+    font-size:24px;
+    text-align: center;
+    margin-bottom:10px;
+    background-color:rgba(0, 0, 0, 0.3)
+}
+#MytodopageClass h2{
+    font-size:24px;
+    text-align: center;
+    margin-bottom:10px;
+}
+.filterTodoClass{
+    text-align:center;
+	padding:10px;
+	background-color:black;
+}
+#filterDropdown{
+	width:120px;
+    height:30px;
+    border-radius:10px;
+	margin-left:10px;
+}
+.filterdiv{
+    margin-top:5px;
+    display:inline-block;
+    width:100px;
+	height:30px;
+	border-radius:20px;
+    margin-left:0px;
+    background-color: aliceblue;
+}
+#filterdate,#filterdaterange,#filtercategory{
+    display:inline-block;
+    height:30px;
+	text-align:center;
+	border-radius:10px;	
+    width:150px;
+}
+#filterdatelabel,#toLabel{
+    color:white;
+    font-size:15px;
+    margin-right:5px;
+ }
+.todoDisplayclass{
+    width:200px;
+    height:200px;
+    background-color:rgba(232, 237, 229, 0.3);
+    border:2px solid #1c5caf;
+    box-shadow: 3px 3px #1c5caf;
+    margin-left:30px;
+    display: inline-block;
+    text-align: center;
+    padding:5px;
+    margin-top:25px;
+}
+.MytopageClass h1{
+    text-align: center;
+}
+.todoDisplayclass h1{
+    font-size:25px;
+    margin-top:10px;
+}
+.isDoneDiv h3{
+	font-size:20px;
+    margin-top:10px;
+	display:inline-block;
+	margin-right:10px;;
+}
+.isDoneDiv input[type="checkbox"]{
+	width:20px;
+	height:20px;
+}
+.todoDisplayclass h3{
+    font-size:20px;
+    margin-top:10px;
+}
+.todoDisplayclass input[type=button]{
+    width:120px;
+    margin-top:10px;
+    height:40px;
+    padding-left:5px;
+    padding-top:0px;
+    font-size:15px;
+    background-color: black;
+    border-radius: 15px;
+    color:white;
+}
+#deleteDiv{
+    vertical-align: top;
+    width:20px;
+    height:20px;
+}
+.isLate{
     background-color:rgba(232, 237, 229, 0.3);
     border:2px solid rgb(219, 85, 85);
     box-shadow: 3px 3px rgb(219, 85, 85);
-    }
-    .isDonetodo{
+}
+.isDonetodo{
+    background-color:rgba(232, 237, 229, 0.3);
+    border:2px solid green;
+    box-shadow: 3px 3px green;
+}
+.todocolor{
+    padding:5px;
+    background-color: rgb(155, 151, 151);
+    margin-top:5px;
+}
+.publiclabel{
+    margin-left:20px;
+}
+#redspan,#greenspan{
+    margin-left:140px;
+    font-size: 20px;
+}
+.redcolor{
+    margin-left:10px;
+    height:20px;
+    width:20px;
+    background-color:rgb(219, 85, 85); 
+    display:inline-block;
+}
+.greencolor{
+    margin-left:10px;
+    height:20px;
+    width:20px;
+    background-color:green; 
+    display:inline-block; 
+}
+.todoItem i,.todoItem1 i{
+    font-size:8px;
+    left:-8px;
         
-            background-color:rgba(232, 237, 229, 0.3);
-            border:2px solid green;
-            box-shadow: 3px 3px green;
-            
-    }
-    .todocolor
-    {
-        padding:5px;
-        background-color: rgb(155, 151, 151);
-        margin-top:5px;
-    }
-    .publiclabel
-    {
-        margin-left:20px;
-    }
-    #redspan,#greenspan
-    {
-        margin-left:140px;
-        font-size: 20px;
-    }
-    .redcolor
-    {
-        margin-left:10px;
-        
-        height:20px;
-        width:20px;
-        background-color:rgb(219, 85, 85); 
-        display:inline-block;
-    }
-    .greencolor
-    {
-        margin-left:10px;
-        height:20px;
-        width:20px;
-        background-color:green; 
-        display:inline-block; 
-    }
-    .todoItem i,.todoItem1 i{
-        font-size:8px;
-
-        left:-8px;
-        
-    }
-    p{
-        display:inline-block;
-        color:red;
-       font-size: 15px;
-       width:100%;
-       height:20px;
-       padding:10px;
-   }
+}
+p{
+    display:inline-block;
+    color:red;
+    font-size: 15px;
+    width:100%;
+    height:20px;
+    padding:10px;
+    padding-top:0px;
+}
+#savestatus{
+    text-align:center;
+    font-size:20px;
+    color:red;
+    margin-bottom: 10px;
+}

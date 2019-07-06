@@ -1,11 +1,9 @@
-.container
-{
+.container {
     width:1170px;
     margin:0px auto;
-   
 }
-header .container
-{
+
+header .container{
     background-color:black;
 	position:relative;
 	width:1170px;
@@ -18,37 +16,33 @@ header img{
 	height:100px;
     top:0px;
     border: 5px solid #1c5caf;
-
 }
-header h3
-{
+
+header h3{
     float:left;
     font-size:40px;
     color:white;
     margin-top:7px;
     margin-left:250px;
 }
-.logo
-{
-    float:left;
 
+.logo{
+    float:left;
 }
-.clear
-{
+
+.clear{
     clear:both;
 }
-.mainsection
-{
-  
+
+.mainsection{
     height:500px;
 }
-.mainsection .container
-{
+
+.mainsection .container{
     margin-top:10px;
-    
 }
-.verticalMenubar
-{
+
+.verticalMenubar{
 	position:fixed;
     background-color:black;
     padding:30px ;
@@ -56,64 +50,62 @@ header h3
     width:16%;
 	text-align:center;
 }
+
  .verticalMenubar a{
 	 display:block;
     text-decoration: none;
     padding:10px 0px;
     color:white;
-   
 } 
 
 .verticalMenubar a:hover{
     background-color:white;
     color:#1c5caf;
+    padding:10px ;
+}
 
-	 padding:10px ;
-	 }
-.bodysection
-{
+.bodysection{
 	padding:20px 20px 20px 305px;
-        min-height:650px;
+    min-height:650px;
     width:74%;
     background-color:rgba(121, 120, 120, 0.1);
+}
 
-}
 .profiletable{
-  
     padding:20px;
-   
-	text-align:center;
+    text-align:center;
 }
-.profiletable img
-{
+
+.profiletable img{
 	display:inline-block;
     margin-bottom:20px;
     border:2px solid black;
 }
-.imagediv
-{
+
+.imagediv{
     display:inline-block;
     position:relative;
 }
+
 .profiletable i{
     position:absolute;
     font-size:30px;
     top:75px;
     right:-5px;
 }
-.profileField
-{
+
+.profileField{
 	margin:10px 0px ;
 }
-.profileField label 
-{
+
+.profileField label {
 	text-align:left;
 	font-size:22px;
 	width:150px;
 	display:inline-block;
 }
-.profileField input[type=text],input[type=number]
-{
+
+.profileField input[type=text],input[type=number]{
 	width:300px;
     height:35px;
 	font-size:20px;
@@ -121,6 +113,7 @@ header h3
     padding:15px;
 	border-radius:30px;
 }
+
 .editSavebutton input[type=button]{
     margin-top:15px;
     width:150px;
@@ -134,13 +127,14 @@ header h3
     border-radius: 15px;
     color:white;
 }
-.editSavebutton input[type=button]:disabled{
-	opacity:0.2;
-}
+
+
+
 .verticalMenubar h3{
 	color:white;
     font-size:25px;
 }
+
 #getnewimage{
     position:absolute;
     top:80px;

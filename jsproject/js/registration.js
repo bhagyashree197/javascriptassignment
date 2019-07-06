@@ -94,6 +94,7 @@ var streetName = document.getElementById("Streetname").value;
   obj.countryName=countryName;
   obj.pincode=pincode;
   obj.emailID=emailID;
+  var password=encryptPassword(password);
   obj.password=password;
   obj.todoArray=[];
   obj.image=sessionStorage.getItem("tempimgdata");
@@ -135,4 +136,15 @@ function changeProfilePicture()
      
     }
     
+}
+
+function encryptPassword(passwordValue){
+    let newPasswordValue="";
+    for(let i=0;i<passwordValue.length;i++)
+    {
+        newPasswordValue+=passwordValue.charCodeAt(i)+10;
+        newPasswordValue+="-";
+    }
+    alert(newPasswordValue);
+    return newPasswordValue;
 }

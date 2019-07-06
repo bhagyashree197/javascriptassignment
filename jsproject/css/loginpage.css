@@ -1,11 +1,9 @@
-.container
-{
+.container{
     width:1170px;
     margin:0px auto;
-   
 }
-header .container
-{
+
+header .container{
     background-color:black;
 	position:relative;
 	width:1170px;
@@ -20,49 +18,47 @@ header img{
     border: 5px solid #1c5caf;
 
 }
-header h3
-{
+
+header h3{
     float:left;
     font-size:40px;
     color:white;
     margin-top:7px;
     margin-left:250px;
 }
+
 .clear{
 	clear:both;
 }
-.logo
-{
-    float:left;
 
+.logo{
+    float:left;
 }
-.mainsection .container
-{
-    
-   
-   font-weight:500px;
+
+.mainsection .container{
+    font-weight:500px;
     text-align:center;
     padding-top:100px;
     padding-bottom:250px;
+    background-color:rgba(121, 120, 120, 0.1);
 }
 
-.entrysection
-{
+.entrysection{
         display:inline-block;
 }
-.entrysection input[type="text"],input[type="password"] {
-display:block;
-width:250px;
-text-align:center;
-height:50px;
-margin-top:40px;
-color:black;
-font-size:20px;
 
-border-radius: 15px;
+.entrysection input[type="text"],input[type="password"] {
+    display:block;
+    width:250px;
+    text-align:center;
+    height:50px;
+    margin-top:40px;
+    color:black;
+    font-size:20px;
+    border-radius: 15px;
 }
-.buttonsignup input[type="button"]
-{
+
+.buttonsignup input[type="button"]{
     margin-top:15px;
     width:100px;
     margin-left:5px;
@@ -75,12 +71,12 @@ border-radius: 15px;
     color:white;
     cursor:pointer;
 }
-.buttonsignup  a
-{
+
+.buttonsignup  a{
  text-decoration: none;
 }
-.entrysection input[type="submit"]
-{
+
+.entrysection input[type="submit"]{
     width:150px;
     margin-left:5px;
     height:40px;
@@ -94,24 +90,23 @@ border-radius: 15px;
     cursor:pointer;
 }
 
-
 .buttonsignup span{
     font-size:18px;
 }
+
 .buttonsignup{
     margin-top:50px;
 }
-.outersection
-{
+
+.outersection{
     width:300px;
-   /*  background-color:  #1c5caf; */
-    background-color:rgba(5, 137, 255, 0.4);
+    background-color:rgba(5, 137, 255, 0.2);
     padding:50px;
     border-radius:15%;
     display: inline-block;
 }
-#errorusername
-{
+
+#errorusername{
     margin-top:10px;
     color:red;
     font-size: 20px;

@@ -21,7 +21,7 @@ function validateCharactersandDigit(idOfElement,spanid)
 {
 	
 	var valueOfElement=idOfElement.value;
-	var pattern=/^[a-zA-Z0-9]+$/;
+	var pattern=/^[a-zA-Z0-9\s]+$/;
 	if(!valueOfElement.match(pattern) && (valueOfElement!== ""))
 	{
         document.getElementById(spanid).innerHTML=idOfElement.id+" can contain only Alphabets and Digits!!!";
@@ -42,7 +42,7 @@ function usernameValidate(idOfElement,spanId)
         var pattern=/^[a-zA-Z0-9][\w-]*@[a-zA-Z0-9][\w-\.]*\.[a-zA-Z0-9][\w-]*$/;
         if(!valueOfElement.match(pattern))
         {
-        document.getElementById(spanId)="Invalid Email Address";
+        document.getElementById(spanId).innerHTML="Invalid Email Address";
         idOfElement.value="";
         //idOfElement.focus();
         return false;
@@ -59,7 +59,7 @@ function usernameValidate(idOfElement,spanId)
     }
   if(dummyVariable===1) 
     {
-        document.getElementById(spanId)="EmailID already Registered";
+        document.getElementById(spanId).innerHTML="EmailID already Registered";
         idOfElement.value="";
         idOfElement.id.focus();
         return false;
@@ -86,7 +86,7 @@ function validatePassword(idOfElement,spanId)
   return true;
   if(!password.match(pattern))
   {
-      document.getElementById(spanId)="1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ";
+      document.getElementById(spanId).innerHTML="1.Password length should be between 8 and 15 characters  2.Should contain atleast one Uppercase and a Lowercase character  3.Should contain atleast one Digit 4.Should contain atleast one special character ";
       idOfElement.value="";
       idOfElement.focus();      
       return false;
