@@ -22,50 +22,47 @@
         </header>
         <div class="mainsection">
             <div class="container">
-                <div class="verticalMenubar">
-                
-                     <a href="profilepage.html">My Profile</a>
+                <div class="verticalmenubar">
+                    <a href="profilepage.html">My Profile</a>
                     <a href="mytodopage.html">My ToDo</a>
-                   <a href="javascript:deleteSession();">Logout</a>
-                
-              </div>
-            <div class="bodysection" id="bodysection">
+                    <a href="javascript:deleteSession();">Logout</a>
+                </div>
+                <div class="bodysection" id="bodysection">
                     <div class="functionbutton">
-                            <input type=button name="New" value="New+" onclick="enableForm('createform');"/>
-                            <a href="javascript:deletetodos();"> <i class="material-icons">delete</i></a>
-                     </div> 
-
-               <div id="formpage">
-                    <h3 id="savestatus">
-                    <h1>MY ToDO</h1>
-                    <div class="todoItem1"><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="Title">Title</label> <input type="text" id="Title" name="Title" required onfocusout="validateCharactersandDigit(this,'titlespanerror');"/><p id="titlespanerror"></p></div>
-                    <div class="todoItem1"><label for="Category">Category</label>
-                    <select name="categorytype" id="categorytype">
-                        <option value="Office">Office</option>
-                        <option value="Social">Social</option>
-                        <option value="Home">Personal</option>
-                    </select></div>
-                    <div class="todoItem1" ><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="StartDatelabel">Start Date</label><input type=date name=startDate id="startDate" required/><p></p></div>
-                    <div class="todoItem1"><label for="DueDatelabel">Due Date</label><input type=date name=enddate id=endDate onchange="validateDate('endDate','startDate','dateerrorspan');"/><p id="dateerrorspan"></p></div>
-                    <div class="todoItem1"><label for="setReminder">Set Reminder</label><input type=checkbox name=setReminder id="setReminder"  onchange="enabletextbox(this,'reminderdate','reminderdatelabel');" /></div>
-                   <div class="todoItem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label>
-                    <input type="datetime-local" name="reminderdate" id="reminderdate" style="display:none;"/></div>
-                    <div class="todoItem1"><label for="makeTodoPublicLabel">Make Todo Public</label>
-                      <label for=Yes class="publiclabel"checked>Yes</label>  <input type="radio" name="makeTodoPublic" value="Yes" checked />
-                      <label for=No class="publiclabel">No</label>  <input type="radio" name="makeTodoPublic" value="No" />
+                        <input type=button name="New" value="New+" onclick="enableForm('createform');"/>
+                        <a href="javascript:deletetodos();"> <i class="material-icons">delete</i></a>
+                    </div> 
+                    <div id="formpage">
+                        <h3 id="savestatus">
+                        <h1>MY ToDO</h1>
+                        <div class="todoitem1"><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="title">Title</label> <input type="text" id="title" name="title" required onfocusout="validateCharactersandDigit(this,'titlespanerror');"/><p id="titlespanerror"></p></div>
+                        <div class="todoitem1"><label for="Category">Category</label>
+                            <select name="categorytype" id="categorytype">
+                            <option value="Office">Office</option>
+                            <option value="Social">Social</option>
+                            <option value="Home">Personal</option>
+                            </select>
+                        </div>
+                        <div class="todoitem1" ><i class="fa fa-asterisk" style="color:red ;position:absolute;"></i><label for="startdatelabel">Start Date</label><input type=date name=startdate id="startdate" required/><p></p></div>
+                        <div class="todoitem1"><label for="duedatelabel">Due Date</label><input type=date name="enddate" id="enddate" onchange="validateDate('enddate','startdate','dateerrorspan');"/><p id="dateerrorspan"></p></div>
+                        <div class="todoitem1"><label for="setreminder">Set Reminder</label><input type=checkbox name="setreminder" id="setreminder"  onchange="enabletextbox(this,'reminderdate','reminderdatelabel');" /></div>
+                        <div class="todoitem1"><label for="reminderdatelabel" id="reminderdatelabel" style="display:none;">Reminder Date</label>
+                                             <input type="datetime-local" name="reminderdate" id="reminderdate" style="display:none;"/></div>
+                        <div class="todoItem1"><label for="maketodopubliclabel">Make Todo Public</label>
+                            <label for=Yes class="publiclabel"checked>Yes</label>  <input type="radio" name="maketodopublic" value="Yes" checked />
+                            <label for=No class="publiclabel">No</label>  <input type="radio" name="maketodopublic" value="No" />
+                        </div>
+                        <div class="todoitem1"> <label for="descriptionlabel">Description</label><textarea name="tododescription" id="tododescription"></textarea></div>
+                        <input type=button class="formbutton" name="addtodoitem" id="addtodoitem" value="Add TODO Item" onclick="validateitems('new');"/>
+                        <input type=button class="formbutton" name="edittodoitem" id="edittodoitem" value="Edit" onclick="editTodoItems();"/>
+				        <input type=button class="formbutton" name="saveeditedtodoitem" id="saveeditedtodoitem" value="Save"  onclick="validateitems('edited');"/>
+                        <input type=button class="formbutton"  name="gobacktodisplaypage" id="gobacktodisplaypage" value="Go Back To Display Page" onclick="enableDisplay();"/>
                     </div>
-                    <div class="todoItem1"> <label for="descriptionlabel">Description</label><textarea name="todoDescription" id="todoDescription"></textarea></div>
-                  <input type=button class="formbutton" name="addTodoItem" id="addTodoItem" value="Add TODO Item" onclick="validateitems('new');"/>
-                 <input type=button class="formbutton" name="editTodoItem" id="editTodoItem" value="Edit" onclick="editTodoItems();"/>
-					<input type=button class="formbutton" name="saveEditedTodoItem" id="saveEditedTodoItem" value="Save"  onclick="validateitems('edited');"/>
-                 <input type=button class="formbutton"  name="goBackToDisplayPage" id="goBackToDisplayPage" value="Go Back To Display Page" onclick="enableDisplay();"/>
-  
-            </div>
-                <div id="MytodopageClass">
-                            <h2>MY TODO</h2>
-                            <div class="filterTodoClass">
-                            <input type=text name="searchTodo" id="searchTodo" placeholder="Type the title of Todo to search" onkeyup="searchTodoByName();"/>
-                            <select id="filterDropdown" onchange="displaydatetext();">
+                    <div id="mytodopageclass">
+                        <h2>MY TODO</h2>
+                        <div class="filtertodoclass">
+                            <input type=text name="searchtodo" id="searchtodo" placeholder="Type the title of Todo to search" onkeyup="searchTodoByName();"/>
+                            <select id="filterdropdown" onchange="displaydatetext();">
                             <option value="Filter" selected>No Filter</option>
                             <option value="byDate">By Date</option>
                             <option value="byDateRange">By Date Range</option>
@@ -81,26 +78,15 @@
                             <option value=Social>Social</option>
                             <option value=Home>Home</option>
                             </select>
-               
                         </div>
-                  <div class="todocolor">
-                <label for="redspan" id="redspan">OverDue To-Dos</label><div class="redcolor"></div>
-                    <label for="greenspan" id="greenspan">Completed To-Dos</label><div class="greencolor"></div>
+                        <div class="todocolor">
+                            <label for="redspan" id="redspan">OverDue To-Dos</label><div class="redcolor"></div>
+                            <label for="greenspan" id="greenspan">Completed To-Dos</label><div class="greencolor"></div>
+                        </div>
+                        <div id="todocards"></div>
+                    </div> 
+		        </div>
             </div>
-
-
-           <div id="todoCards"></div>
-            </div> 
-			
-			
-                
-                
-                
-            
-
-         </div>
-                  
-                    
         </div>
-    </div>
-        </body>
+    </body>
+</html>

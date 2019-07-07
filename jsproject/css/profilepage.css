@@ -42,7 +42,7 @@ header h3{
     margin-top:10px;
 }
 
-.verticalMenubar{
+.verticalmenubar{
 	position:fixed;
     background-color:black;
     padding:30px ;
@@ -51,14 +51,14 @@ header h3{
 	text-align:center;
 }
 
- .verticalMenubar a{
+ .verticalmenubar a{
 	 display:block;
     text-decoration: none;
     padding:10px 0px;
     color:white;
 } 
 
-.verticalMenubar a:hover{
+.verticalmenubar a:hover{
     background-color:white;
     color:#1c5caf;
     padding:10px ;
@@ -94,18 +94,18 @@ header h3{
     right:-5px;
 }
 
-.profileField{
+.profilefield{
 	margin:10px 0px ;
 }
 
-.profileField label {
+.profilefield label {
 	text-align:left;
 	font-size:22px;
 	width:150px;
 	display:inline-block;
 }
 
-.profileField input[type=text],input[type=number]{
+.profilefield input[type=text],input[type=number]{
 	width:300px;
     height:35px;
 	font-size:20px;
@@ -114,7 +114,7 @@ header h3{
 	border-radius:30px;
 }
 
-.editSavebutton input[type=button]{
+.editsavebutton input[type=button]{
     margin-top:15px;
     width:150px;
 	margin-bottom:20px;
@@ -128,9 +128,7 @@ header h3{
     color:white;
 }
 
-
-
-.verticalMenubar h3{
+.verticalmenubar h3{
 	color:white;
     font-size:25px;
 }
@@ -139,4 +137,8 @@ header h3{
     position:absolute;
     top:80px;
     opacity:0;
+}
+.profilefield p{
+    padding:10px;
+    color:red;
 }

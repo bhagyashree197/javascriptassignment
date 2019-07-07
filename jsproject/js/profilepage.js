@@ -9,38 +9,31 @@ if(sessionStorage.getItem("userId")== null)
 
 
 function profileInDisabledMode(){
-	 disableTextbox();
+	disableTextbox();
 	var arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userId=sessionStorage.getItem("userId");
-	var firstName = document.getElementById("Firstname");
-	var lastName = document.getElementById("Lastname");
-	var streetName = document.getElementById("Streetname");
-	var cityName = document.getElementById("Cityname");
-	var stateName = document.getElementById("Statename");
-	var countryName = document.getElementById("Countryname");
-	var pincode = document.getElementById("Pincode");
+	document.getElementById("firstname").value=arrayUserRecord[userId].firstName;
+	document.getElementById("lastname").value=arrayUserRecord[userId].lastName;
+	document.getElementById("streetname").value=arrayUserRecord[userId].streetName;
+	document.getElementById("cityname").value=arrayUserRecord[userId].cityName;
+	document.getElementById("statename").value=arrayUserRecord[userId].stateName;
+	document.getElementById("countryname").value=arrayUserRecord[userId].countryName;
+	document.getElementById("pincode").value=arrayUserRecord[userId].pincode;
+	document.getElementById("emailid").value=arrayUserRecord[userId].emailID;
 	if(arrayUserRecord[userId].Gender === "Male")
-		 document.getElementById("Male").checked=true;
+		 document.getElementById("male").checked=true;
 	else if(arrayUserRecord[userId].Gender === "Female")
-		 document.getElementById("Female").checked=true;
+		 document.getElementById("female").checked=true;
 	else{
-		 document.getElementById("Other").checked=true;
+		 document.getElementById("other").checked=true;
 	}
-	firstName.value=arrayUserRecord[userId].firstName;
-	lastName.value=arrayUserRecord[userId].lastName;
-	streetName.value=arrayUserRecord[userId].streetName;
-	cityName.value=arrayUserRecord[userId].cityName;
-	stateName.value=arrayUserRecord[userId].stateName;
-	countryName.value=arrayUserRecord[userId].countryName;
-	pincode.value=arrayUserRecord[userId].pincode;
-	Emailid.value=arrayUserRecord[userId].emailID;
 	document.getElementById("edituserpic").src=arrayUserRecord[userId].image;
 }
 
 function profileinEditmode(){
-	document.getElementById("Save").style.display="inline-block";
-	document.getElementById("Edit").style.display="none";
-	 var profileFieldArray=document.getElementsByClassName("profileField");
+	document.getElementById("save").style.display="inline-block";
+	document.getElementById("edit").style.display="none";
+	 var profileFieldArray=document.getElementsByClassName("profilefield");
 	 document.getElementById("getnewimage").disabled=false;
 	for(let j=0;j<profileFieldArray.length;j++)
 	{
@@ -48,100 +41,76 @@ function profileinEditmode(){
 		for(let i=0;i<childElements.length;i++)
 		childElements[i].disabled=false;
 	}
-	document.getElementById("Emailid").disabled=true;
+	document.getElementById("emailid").disabled=true;
 }
 
 function saveChangedData(){
-	var firstName = document.getElementById("Firstname").value;
-    var lastName = document.getElementById("Lastname").value;
+	var firstName = document.getElementById("firstname").value;
+    var lastName = document.getElementById("lastname").value;
 	if((firstName=="")||(lastName=="")){
-		document.getElementById("Firstname").style.border="2px solid red";
-        document.getElementById("Lastname").style.border="2px solid red";
+		document.getElementById("firstname").style.border="2px solid red";
+        document.getElementById("lastname").style.border="2px solid red";
        	alert("Please fill out all the mandatory Elements");
 		return false;
 	}
 	else{
-		document.getElementById("Firstname").style.border="";
-        document.getElementById("Lastname").style.border="";
+		document.getElementById("firstname").style.border="";
+        document.getElementById("lastname").style.border="";
 		var userId=sessionStorage.getItem("userId");
-		var firstName = document.getElementById("Firstname").value;
-		var lastName = document.getElementById("Lastname").value;
-		var streetName = document.getElementById("Streetname").value;
-		var cityName = document.getElementById("Cityname").value;
-		var stateName = document.getElementById("Statename").value;
-		var countryName = document.getElementById("Countryname").value;
-		var pincode = document.getElementById("Pincode").value;
 		var userArrayRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
-		var Gender = document.querySelector('input[name="Gender"]:checked').value;
-		var password=userArrayRecord[userId].password;
-		var emailID=userArrayRecord[userId].emailID;
 		var obj=new Object();
 		obj.firstName=firstName;
 		obj.lastName=lastName;
-		obj.Gender=Gender;
-		obj.streetName=streetName;
-		obj.cityName=cityName;
-		obj.stateName=stateName;
-		obj.countryName=countryName;
-		obj.pincode=pincode;
-		obj.emailID=emailID;
-		obj.password=password;
+		obj.Gender=document.querySelector('input[name="gender"]:checked').value;
+		obj.streetName=document.getElementById("streetname").value;
+		obj.cityName=document.getElementById("cityname").value;
+		obj.stateName=document.getElementById("statename").value;
+		obj.countryName= document.getElementById("countryname").value;
+		obj.pincode=document.getElementById("pincode").value;
+		obj.emailID=userArrayRecord[userId].emailID;
+		obj.password=userArrayRecord[userId].password;
 		obj.todoArray=userArrayRecord[userId].todoArray;
 		obj.image=userArrayRecord[userId].image;
 		userArrayRecord[userId]=obj;
 		var persondetailsinstring=JSON.stringify(userArrayRecord);
 		localStorage.setItem("registeredUserRecord",persondetailsinstring);
 		disableTextbox();
-	
 	}
 }
 
-function disableTextbox()
-{
-	document.getElementById("Edit").style.display="inline-block";
-	document.getElementById("Save").style.display="none";
+function disableTextbox(){
+	document.getElementById("edit").style.display="inline-block";
+	document.getElementById("save").style.display="none";
 	document.getElementById("getnewimage").disabled=true;
-    var profileFieldArray=document.getElementsByClassName("profileField");
-	for(let j=0;j<profileFieldArray.length;j++)
-	{
+    var profileFieldArray=document.getElementsByClassName("profilefield");
+	for(let j=0;j<profileFieldArray.length;j++){
 		var childElements=profileFieldArray[j].childNodes;
 		for(let i=0;i<childElements.length;i++)
 		childElements[i].disabled=true;
 	}
 }
 
-
-
-function editImage()
-{
-    
+function editImage(){
     var Image =document.getElementById("getnewimage").files[0];
-
-    getimgbase64(Image);
+	getimgbase64(Image);
     function getimgbase64(Image){
-        var reader = new FileReader();
-        reader.readAsDataURL(Image);
-       
-        reader.onload = function () {
-          
-            var imgdata = reader.result;
-            sessionStorage.setItem("tempimgdata1",imgdata);
+    	var reader = new FileReader();
+    	reader.readAsDataURL(Image);
+    	reader.onload = function () {
+    		var imgdata = reader.result;
+    		sessionStorage.setItem("tempimgdata1",imgdata);
 			document.getElementById("edituserpic").src=sessionStorage.tempimgdata1;
 			var arrayofuserobject=JSON.parse(localStorage.getItem("registeredUserRecord"));
 			var userid=sessionStorage.getItem("userId");
-
 			arrayofuserobject[userid].image=sessionStorage.getItem("tempimgdata1");
 			var tostring=JSON.stringify(arrayofuserobject);
 			localStorage.setItem("registeredUserRecord",tostring);
-        };
+    	};
     
         reader.onerror = function (error) {
-        };
+		};
       
-		
-
-    }
-    
+	}
 }
 
   

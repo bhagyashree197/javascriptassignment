@@ -35,7 +35,7 @@ header h3{
     margin-top:10px;
     
 }
-.verticalMenubar{
+.verticalmenubar{
 	position:fixed;
     background-color: black;
     padding:30px ;
@@ -43,13 +43,13 @@ header h3{
     width:16%;
 	text-align:center;
 }
- .verticalMenubar a{
+ .verticalmenubar a{
 	 display:block;
     text-decoration: none;
     padding:10px 0px;
     color:white;
 } 
-.verticalMenubar a:hover{
+.verticalmenubar a:hover{
     background-color:white;
     color:#1c5caf;
 	 padding:10px ;
@@ -92,7 +92,7 @@ header h3{
 hr{
     width:100%;
 }
-#formpage,#registeredUserForm{
+#formpage{
     padding:20px;   
     background-color:rgba(5, 137, 255, 0.2);
     text-align:left;
@@ -101,16 +101,11 @@ h1{
     font-size:30px;
     text-align: center;
 }
-#formpage label,#registeredUserForm label{
+#formpage label{
     font-size: 20px;
     margin-bottom:10px;
 }
-.todoItem{
-    position:relative;
-    display:inline-block;
-    width:40%;
-}
-.todoItem1{
+.todoitem1{
     display:block;
     position:relative;
     margin:20px 0px;
@@ -123,11 +118,11 @@ textarea{
     padding:20px;
 }
 
-.todoItem label{
+.todoitem label{
     font-size:20px;
     display:block; 
 }
-#formpage input[type="text"],#registeredUserForm input[type="text"]{
+#formpage input[type="text"]{
     display:inline-block;
     height:30px;
     padding:20px;
@@ -136,14 +131,14 @@ textarea{
     width:600px;
 }
 
-#formpage input[type="date"],#registeredUserForm input[type="date"]{
+#formpage input[type="date"]{
     display:inline-block;
     width:200px;
 }
 .categorytype{
     width:200px;
 }
-#formpage  input[type=button],#registeredUserForm input[type="button"]{
+#formpage  input[type=button]{
     width:190px;
     margin-left:35px;
     height:40px;
@@ -155,13 +150,13 @@ textarea{
     color:white;
         
 }
-#searchTodo{
+#searchtodo{
 	display:inline-block;
 	height:30px;
 	text-align:center;
 	width:250px;
 }
-#searchTodoButton{
+#searchtodoButton{
 	width:190px;
     margin-left:0px;
     height:30px;
@@ -171,27 +166,27 @@ textarea{
     background-color: black;
     color:white;
 }
-#todoCards{
+#todocards{
     min-width:500px;
         
 }
-#MytodopageClass h1{
+#mytodopageclass h1{
     font-size:24px;
     text-align: center;
     margin-bottom:10px;
     background-color:rgba(0, 0, 0, 0.3)
 }
-#MytodopageClass h2{
+#mytodopageclass h2{
     font-size:24px;
     text-align: center;
     margin-bottom:10px;
 }
-.filterTodoClass{
+.filtertodoclass{
     text-align:center;
 	padding:10px;
 	background-color:black;
 }
-#filterDropdown{
+#filterdropdown{
 	width:120px;
     height:30px;
     border-radius:10px;
@@ -213,12 +208,12 @@ textarea{
 	border-radius:10px;	
     width:150px;
 }
-#filterdatelabel,#toLabel{
+#filterdatelabel,#tolabel{
     color:white;
     font-size:15px;
     margin-right:5px;
  }
-.todoDisplayclass{
+.tododisplayclass{
     width:200px;
     height:200px;
     background-color:rgba(232, 237, 229, 0.3);
@@ -230,28 +225,28 @@ textarea{
     padding:5px;
     margin-top:25px;
 }
-.MytopageClass h1{
+.mytopageclass h1{
     text-align: center;
 }
-.todoDisplayclass h1{
+.tododisplayclass h1{
     font-size:25px;
     margin-top:10px;
 }
-.isDoneDiv h3{
+.isdonediv h3{
 	font-size:20px;
     margin-top:10px;
 	display:inline-block;
 	margin-right:10px;;
 }
-.isDoneDiv input[type="checkbox"]{
+.isdonediv input[type="checkbox"]{
 	width:20px;
 	height:20px;
 }
-.todoDisplayclass h3{
+.tododisplayclass h3{
     font-size:20px;
     margin-top:10px;
 }
-.todoDisplayclass input[type=button]{
+.tododisplayclass input[type=button]{
     width:120px;
     margin-top:10px;
     height:40px;
@@ -262,17 +257,17 @@ textarea{
     border-radius: 15px;
     color:white;
 }
-#deleteDiv{
+#deletediv{
     vertical-align: top;
     width:20px;
     height:20px;
 }
-.isLate{
+.islate{
     background-color:rgba(232, 237, 229, 0.3);
     border:2px solid rgb(219, 85, 85);
     box-shadow: 3px 3px rgb(219, 85, 85);
 }
-.isDonetodo{
+.isdonetodo{
     background-color:rgba(232, 237, 229, 0.3);
     border:2px solid green;
     box-shadow: 3px 3px green;
@@ -303,7 +298,7 @@ textarea{
     background-color:green; 
     display:inline-block; 
 }
-.todoItem i,.todoItem1 i{
+.todoitem1 i{
     font-size:8px;
     left:-8px;
         

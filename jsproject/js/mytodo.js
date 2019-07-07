@@ -1,9 +1,9 @@
 function validateitems(objectType){
-	var title=document.getElementById("Title").value;
-	var startDate=document.getElementById("startDate").value;
+	var title=document.getElementById("title").value;
+	var startDate=document.getElementById("startdate").value;
 	if(title == " " || startDate==""){
-		document.getElementById("Title").style.border="2px solid red";
-        document.getElementById("startDate").style.border="2px solid red"
+		document.getElementById("title").style.border="2px solid red";
+        document.getElementById("startdate").style.border="2px solid red"
 		document.getElementById("savestatus").innerHTML="**Please Fill All The Mandatory Fields**";
 		return false;
 	}
@@ -11,13 +11,13 @@ function validateitems(objectType){
 }
 
 function addTodoItems(objectType){
-	var title=document.getElementById("Title").value;
+	var title=document.getElementById("title").value;
 	var categorytype=document.getElementById("categorytype").value;
-	var startDate=document.getElementById("startDate").value;
-	var endDate=document.getElementById("endDate").value;
-	var setReminder=document.getElementById("setReminder").checked;
-	var makeToDoPublic= document.querySelector('input[name="makeTodoPublic"]:checked').value;
-	var todoDescription=document.getElementById("todoDescription").value;
+	var startDate=document.getElementById("startdate").value;
+	var endDate=document.getElementById("enddate").value;
+	var setReminder=document.getElementById("setreminder").checked;
+	var makeToDoPublic= document.querySelector('input[name="maketodopublic"]:checked').value;
+	var todoDescription=document.getElementById("tododescription").value;
 	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userId=sessionStorage.getItem("userId");
 	let todoArray=arrayUserRecord[userId].todoArray;
@@ -64,7 +64,7 @@ function addTodoItems(objectType){
 	}
     arrayUserRecord=JSON.stringify(arrayUserRecord);
 	localStorage.setItem("registeredUserRecord",arrayUserRecord);
-	enableForm('disabledform');
+	enableForm('createdanewtodo');
 	document.getElementById("savestatus").innerHTML="Record Successfully Saved";
 }
 
@@ -81,7 +81,7 @@ function clickStatus(IdOfElement){
 
 function todopageInDisplayMode(inputValue,userid)
 {
-	var e=document.getElementById("todoCards");
+	var e=document.getElementById("todocards");
 	var child = e.lastElementChild;  
 	while (child) { 
 		e.removeChild(child); 
@@ -92,7 +92,7 @@ function todopageInDisplayMode(inputValue,userid)
 		var li = document.createElement("noRecordText");
 		var content="<h1 style='margin-top:30px;'>No Records found</h1>";
 		li.innerHTML=content;
-		document.getElementById("todoCards").appendChild(li);
+		document.getElementById("todocards").appendChild(li);
 	}
 	else{
 	  for(var count=0;count<inputValue.length;count++){
@@ -115,16 +115,16 @@ function todopageInDisplayMode(inputValue,userid)
 				var classname="isDonetodo";	
 			}
 			
-			var divtodo='<div class="todoDisplayclass ' +classname+'" id=display-'+inputValue[count].todoID+'><input type=checkbox name="deleteDiv" id=checkbox-'+inputValue[count].todoID+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><div class="isDoneDiv"><h3>Is Done</h3><input type=checkbox name="isDone" id="isDone-'+count+'" onclick=changeStatusOfTodo(this);></div><input type="button" name="viewFullTodo" value="View Full Todo"></div>';
+			var divtodo='<div class="tododisplayclass ' +classname+'" id=display-'+inputValue[count].todoID+'><input type=checkbox name="deletediv" id=checkbox-'+inputValue[count].todoID+'><h1>'+title+'</h1><h3>Category:'+categoryType+'</h3><h3>Start Date'+startdate+'</h3><h3>End Date'+endDate+'</h3><div class="isdonediv"><h3>Is Done</h3><input type=checkbox name="isdone" id="isdone-'+count+'" onclick=changeStatusOfTodo(this);></div><input type="button" name="viewfulltodo" value="View Full Todo"></div>';
 			li.innerHTML=divtodo;
-			document.getElementById("todoCards").appendChild(li);
+			document.getElementById("todocards").appendChild(li);
 
 			if(todoStatus == "isDone"){
-				document.getElementById("isDone-"+count).checked=true; 
+				document.getElementById("isdone-"+count).checked=true; 
 			}
 		}   
            
-			let buttonArray=document.getElementsByName("viewFullTodo");
+			let buttonArray=document.getElementsByName("viewfulltodo");
 			for(let i=0;i<buttonArray.length;i++){
 				buttonArray[i].addEventListener('click',function(){
 					var parentId=buttonArray[i].parentNode.id;
@@ -137,7 +137,7 @@ function todopageInDisplayMode(inputValue,userid)
 	}	
 }
 
-function disableFields(){
+function getFieldValues(){
 	let todoId=sessionStorage.getItem("todoId");
 	let todoIndex;
 	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
@@ -148,10 +148,10 @@ function disableFields(){
 		todoIndex=i;
 	}
 	var todoArray=arrayUserRecord[userId].todoArray[todoIndex]; 
-	document.getElementById("Title").value=todoArray.title;
-	document.getElementById("startDate").value=todoArray.startDate;
-	document.getElementById("endDate").value=todoArray.endDate;
-	document.getElementById("todoDescription").value=todoArray.todoDescription;
+	document.getElementById("title").value=todoArray.title;
+	document.getElementById("startdate").value=todoArray.startDate;
+	document.getElementById("enddate").value=todoArray.endDate;
+	document.getElementById("tododescription").value=todoArray.todoDescription;
 	
 	var categoryId=document.getElementById("categorytype");
 	document.getElementById("categorytype").disabled=true;
@@ -162,37 +162,42 @@ function disableFields(){
 		}
 	}
 		if(todoArray.setReminder == true){
-			document.getElementById("setReminder").checked =true;
+			document.getElementById("setreminder").checked =true;
 			document.getElementById("reminderdate").style.display="inline-block";
 			document.getElementById("reminderdate").value=todoArray.reminderDate;
 			document.getElementById("reminderdatelabel").style.display="inline-block";
 			
 		}
 		else{
-			document.getElementById("setReminder").checked =false;
+			document.getElementById("setreminder").checked =false;
 			document.getElementById("reminderdate").style.display="none";
 			document.getElementById("reminderdatelabel").style.display="none";
 		}
-		var makePublicId=document.getElementsByName("makeTodoPublic");
-		makePublicId[0].disabled=true;
-		makePublicId[1].disabled=true;
-		if(todoArray.makeTodoPublic === "Yes")
-			makePublicId[0].checked=true;
-		else 
-			makePublicId[1].checked=true;
-		var todoItem1Array=document.getElementsByClassName("todoItem1");
-		for(let i=0;i<todoItem1Array.length;i++)
-		{
-			var childElements=todoItem1Array[i].childNodes;
-			for(let j=0;j<childElements.length;j++)
-			childElements[j].disabled=true;
-		}
+		disableFields();
+}
+function disableFields(){
+	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
+    var userId=sessionStorage.getItem("userId");
+	var todoArray=arrayUserRecord[userId].todoArray;
+	var makePublicId=document.getElementsByName("maketodopublic");
+	makePublicId[0].disabled=true;
+	makePublicId[1].disabled=true;
+	if(todoArray.makeTodoPublic === "Yes")
+		makePublicId[0].checked=true;
+	else 
+		makePublicId[1].checked=true;
+	var todoItem1Array=document.getElementsByClassName("todoitem1");
+	for(let i=0;i<todoItem1Array.length;i++){
+		var childElements=todoItem1Array[i].childNodes;
+		for(let j=0;j<childElements.length;j++)
+		childElements[j].disabled=true;
+	}
 }
 
 function filterTodoFunction(){
 	document.getElementById("formpage").style.display="none";
-    document.getElementById("MytodopageClass").style.display="block"; 
-	let filterValue=document.getElementById("filterDropdown").value;
+    document.getElementById("mytodopageclass").style.display="block"; 
+	let filterValue=document.getElementById("filterdropdown").value;
 	let arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	let userid=sessionStorage.getItem("userId");
 	let inputValue = arrayUserRecord[userid].todoArray;
@@ -206,7 +211,7 @@ function filterTodoFunction(){
 		document.getElementById("toLabel").style.display="none"
 			
 	}
-	 if(document.getElementById("filterDropdown").value === "byDate"){
+	 if(document.getElementById("filterdropdown").value === "byDate"){
 		document.getElementById("filterdatelabel").style.display="none";
 		var filterdate=document.getElementById("filterdate").value;
 		inputValue=inputValue.filter(function(date1){
@@ -214,7 +219,7 @@ function filterTodoFunction(){
 		})
 		todopageInDisplayMode(inputValue,userid);
 	}
-	 if(document.getElementById("filterDropdown").value === "byCategory"){
+	 if(document.getElementById("filterdropdown").value === "byCategory"){
 		if(document.getElementById("filtercategory").value ==="Category"){
 			todopageInDisplayMode(inputValue,userid);
 	}
@@ -236,7 +241,7 @@ function filterTodoFunction(){
 	}
 		todopageInDisplayMode(inputValue,userid);
 	}
-	 if(document.getElementById("filterDropdown").value === "isDone")
+	 if(document.getElementById("filterdropdown").value === "isDone")
 	{
 		inputValue=inputValue.filter(function(category1){
 			return(category1.todoStatus === "isDone")
@@ -244,7 +249,7 @@ function filterTodoFunction(){
 			todopageInDisplayMode(inputValue,userid);
 
 	}
-	if(document.getElementById("filterDropdown").value === "isPending")
+	if(document.getElementById("filterdropdown").value === "isPending")
 	{
 		inputValue=inputValue.filter(function(category1){
 			return(category1.todoStatus === "isPending")
@@ -252,7 +257,7 @@ function filterTodoFunction(){
 			todopageInDisplayMode(inputValue,userid);
 
 	}
-	if(document.getElementById("filterDropdown").value === "byDateRange")
+	if(document.getElementById("filterdropdown").value === "byDateRange")
 	{
 		
 		var startdate=document.getElementById("filterdate").value;
@@ -270,13 +275,13 @@ function displaydatetext(){
 	document.getElementById("filtercategory").style.display="none";
 	document.getElementById("filterdatelabel").style.display="none";
 	document.getElementById("toLabel").style.display="none"
-	if(document.getElementById("filterDropdown").value === "byDate"){
+	if(document.getElementById("filterdropdown").value === "byDate"){
 		document.getElementById("filterdate").style.display="inline-block";
 	}
-	else if(document.getElementById("filterDropdown").value === "byCategory"){
+	else if(document.getElementById("filterdropdown").value === "byCategory"){
 		document.getElementById("filtercategory").style.display="inline-block";	
 	}
-	else if(document.getElementById("filterDropdown").value === "byDateRange"){
+	else if(document.getElementById("filterdropdown").value === "byDateRange"){
 		document.getElementById("filterdatelabel").style.display="inline-block";
 		document.getElementById("toLabel").style.display="inline-block";
 		document.getElementById("filterdaterange").style.display="inline-block";
@@ -306,8 +311,8 @@ function enableForm(formmode){
 	let date = ('0' + current_date.getDate()).slice(-2);
 	let year = current_date.getFullYear();
 	current = year + '-' + month + '-' + date;
-	document.getElementById("startDate").min=current;
-	document.getElementById("endDate").min=current;
+	document.getElementById("startdate").min=current;
+	document.getElementById("enddate").min=current;
 	document.getElementById("reminderdate").min=current;
 	var childArray=document.getElementById("bodysection").childNodes;
  	childArray[1].style.display="block";
@@ -320,7 +325,7 @@ function enableForm(formmode){
 		buttonArray[1].style.display="inline-block";
 		buttonArray[3].style.display="inline-block";
 		buttonArray[2].style.display="none";
-		disableFields();
+		getFieldValues();
 	}
 	else if(formmode ==="createform" ){
 					
@@ -329,11 +334,19 @@ function enableForm(formmode){
 		buttonArray[1].style.display="none";
 		buttonArray[2].style.display="none";
 	}
+	else if(formmode=="createdanewtodo")
+	{
+		buttonArray[0].style.display="none";
+		buttonArray[1].style.display="none";
+		buttonArray[3].style.display="inline-block";
+		buttonArray[2].style.display="none";
+		disableFields();	
+	}
 }
 
 function enableDisplay(){
     document.getElementById("formpage").style.display="none";
-    document.getElementById("MytodopageClass").style.display="block";
+    document.getElementById("mytodopageclass").style.display="block";
 	window.location.reload();
 
 }
@@ -342,7 +355,7 @@ function deletetodos(){
 	let checkedarray=[];
 	userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userid=sessionStorage.getItem("userId");
-	var deleteDiv=document.getElementsByName("deleteDiv");
+	var deleteDiv=document.getElementsByName("deletediv");
 	for(var i=0;i<deleteDiv.length;i++){
 		var todoidstring=deleteDiv[i].id;
 		var todoid=todoidstring.split("-");
@@ -377,8 +390,8 @@ function editTodoItems(){
 		todoIndex=i;
 	}
 	 todoArray=arrayUserRecord[userId].todoArray[todoIndex]; 
-	let makepublicId=document.getElementsByName("makeTodoPublic");
-	var todoItem1Array=document.getElementsByClassName("todoItem1");
+	let makepublicId=document.getElementsByName("maketodopublic");
+	var todoItem1Array=document.getElementsByClassName("todoitem1");
 		for(let i=0;i<todoItem1Array.length;i++){
 			var childElements=todoItem1Array[i].childNodes;
 			for(let j=0;j<childElements.length;j++)
@@ -394,7 +407,7 @@ function editTodoItems(){
 
 function searchTodoByName(){
 	var arrayValue=[];
-	var searchtext=document.getElementById("searchTodo").value;
+	var searchtext=document.getElementById("searchtodo").value;
 	let userRecordArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userid=sessionStorage.getItem("userId");
 	var inputValue=userRecordArray[userid].todoArray;
@@ -450,5 +463,6 @@ function validateDate(date1,date2,errorspan){
 		document.getElementById(date1).focus();
 		return false;
 	}
+	document.getElementById(errorspan).innerHTML=" ";
 	return true;
 }

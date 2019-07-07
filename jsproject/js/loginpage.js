@@ -1,25 +1,25 @@
-
-
-
+(function(){
+if(sessionStorage.getItem("userId")!== null)
+{
+	window.location.href="../html/mytodopage.html";
+}
+})();
 
 function validateCredentials(spanId){
-    var emailID=document.getElementById("Emailaddress");
-    var password=document.getElementById("Password");
+    var emailID=document.getElementById("emailaddress");
+    var password=document.getElementById("password");
     var getUserArray=JSON.parse(localStorage.getItem("registeredUserRecord"));
     var pattern=/^[a-zA-Z0-9][\w-]*@[a-zA-Z0-9][\w-\.]*\.[a-zA-Z0-9][\w-]*$/;
     let userId;
-    if(!emailID.value.match(pattern))
-    {
+    if(!emailID.value.match(pattern)){
         document.getElementById(spanId).innerHTML="Invalid Email Address";
         idOfElement.value="";
         idOfElement.focus();
         return false;
     }
-    else
-    {
+    else{
         for(var count=0;count<getUserArray.length;count++){
-            if(emailID.value == getUserArray[count].emailID)
-            {
+            if(emailID.value == getUserArray[count].emailID){
                 let decryptPasswordValue;
                 decryptPasswordValue=decryptPassword(getUserArray[count].password);
                 if(decryptPasswordValue === password.value){
