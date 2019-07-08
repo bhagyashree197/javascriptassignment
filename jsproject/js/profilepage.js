@@ -20,9 +20,9 @@ function profileInDisabledMode(){
 	document.getElementById("countryname").value=arrayUserRecord[userId].countryname;
 	document.getElementById("pincode").value=arrayUserRecord[userId].pincode;
 	document.getElementById("emailid").value=arrayUserRecord[userId].emailid;
-	if(arrayUserRecord[userId].Gender === "Male")
+	if(arrayUserRecord[userId].gender === "Male")
 		 document.getElementById("male").checked=true;
-	else if(arrayUserRecord[userId].Gender === "Female")
+	else if(arrayUserRecord[userId].gender === "Female")
 		 document.getElementById("female").checked=true;
 	else{
 		 document.getElementById("other").checked=true;
@@ -67,7 +67,7 @@ function saveChangedData(){
 		obj.stateName=document.getElementById("statename").value;
 		obj.countryName= document.getElementById("countryname").value;
 		obj.pincode=document.getElementById("pincode").value;
-		obj.emailID=userArrayRecord[userId].emailID;
+		obj.emailID=userArrayRecord[userId].emailid;
 		obj.password=userArrayRecord[userId].password;
 		obj.todoArray=userArrayRecord[userId].todoArray;
 		obj.image=userArrayRecord[userId].image;

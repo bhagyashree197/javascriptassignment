@@ -1,3 +1,9 @@
+(function(){
+    if(sessionStorage.getItem("userId")!== null)
+    {
+        window.location.href="../html/mytodopage.html";
+    }
+    })();
 
 function validatepincode(){
     let pincode=document.getElementById("pincode");
