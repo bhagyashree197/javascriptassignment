@@ -85,3 +85,5 @@ function validatePassword(idOfElement,spanId){
   }
   document.getElementById(spanId).innerHTML="";
 }
+
+

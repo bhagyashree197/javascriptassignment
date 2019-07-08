@@ -20,36 +20,36 @@
         </header>
         <div class="mainsection" >
             <div class="container">
-                <div class="formpage" id="formpage">
+                <form class="formpage" id="formpage" onsubmit="">
                     <h3 id="pagesubmission"></h3>
                     <h3>REGISTRATION PAGE</h3>
                     <hr>
                     <h5>GENERAL INFO</h5>
                     <hr>
-                    <div class=fielddiv><i class=    "fa fa-asterisk" style="color:red;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="setfirstname" id="setfirstname" placeholder="First Name" required onfocusout="validateonlycharacters(this,'fnamespan')"/><p id="fnamespan"></p> </div>
-                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="setlastname" id="setlastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this,'lnamespan');"/><p id="lnamespan"></p></div>
-                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="setemailid" id="setemailid" placeholder="Email Address" onfocusout=" usernameValidate(this,'emailspan')" required /><p id="emailspan"></p></div>
-                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="password" name="setpassword" id="setpassword" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet" onfocusout="validatePassword(this,'passwordspan');"/><p id="passwordspan"></p></div> 
-                    <input type="radio" name="setgender" id="setmale" value="Male" checked /><label>Male</label>
-                    <input type="radio" name="setgender" id="setfemale" value="Female"/><label>Female</label>
-                    <input type="radio" name="setgender" id="setother" value="Other"/><label>Other</label>
+                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="firstname" id="firstname" placeholder="First Name" required onfocusout="validateonlycharacters(this,'fnamespan')"/><p id="fnamespan"></p> </div>
+                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="lastname" id="lastname" id="lastname" placeholder="Last Name" required onfocusout="validateonlycharacters(this,'lnamespan');"/><p id="lnamespan"></p></div>
+                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="text" name="emailid"  id="emailid" placeholder="Email Address" onfocusout=" usernameValidate(this,'emailspan')" required /><p id="emailspan"></p></div>
+                    <div class=fielddiv><i class="fa fa-asterisk" style="color:red ;position:absolute;left:-5px; top:-10px;"></i><input type="password" name="password" id="password" placeholder="Password"  required title="Pasword should be of length 8-15,Should contain a special character,Should have atleast one uppercase and a lowercase alphabet" onfocusout="validatePassword(this,'passwordspan');"/><p id="passwordspan"></p></div> 
+                    <input type="radio" name="gender" id="male" value="Male" checked /><label>Male</label>
+                    <input type="radio" name="gender" id="female" value="Female"/><label>Female</label>
+                    <input type="radio" name="gender" id="other" value="Other"/><label>Other</label>
                     <h5>ADDRESS</h5>
                     <hr>
-                    <input type="text" name="setstreetname" id="setstreetname" placeholder="Plot No/ Building name/ Street Name"/>
-                    <div class=fielddiv><input type="text" name="setcityname" id="setcityname" placeholder="City"  onfocusout="validateonlycharacters(this,'cityspan');"/><p id="cityspan"></p></div>
-                    <div class=fielddiv> <input type="text" name="setstatename" id="setstatename" placeholder="State"  onfocusout="validateonlycharacters(this,'statespan');"/><p id="statespan"></p></div>
-                    <div class=fielddiv> <input type="text" name="setcountryname" id="setcountryname" placeholder="Country"  onfocusout="validateonlycharacters(this,'countryspan');"/><p id="countryspan"></p></div>
-                    <div class=fielddiv><input type="number" name="setpincode" id="setpincode" placeholder="Pincode" onfocusout="validatepincode();"><p id="pincodespan"></p></div>
+                    <input type="text" name="streetname" id="streetname" placeholder="Plot No/ Building name/ Street Name"/>
+                    <div class=fielddiv><input type="text" name="cityname" id="cityname" placeholder="City"  onfocusout="validateonlycharacters(this,'cityspan');"/><p id="cityspan"></p></div>
+                    <div class=fielddiv> <input type="text" name="statename" id="statename" placeholder="State"  onfocusout="validateonlycharacters(this,'statespan');"/><p id="statespan"></p></div>
+                    <div class=fielddiv> <input type="text" name="countryname" id="countryname" placeholder="Country"  onfocusout="validateonlycharacters(this,'countryspan');"/><p id="countryspan"></p></div>
+                    <div class=fielddiv><input type="number" name="pincode" id="pincode" placeholder="Pincode" onfocusout="validatepincode();"><p id="pincodespan"></p></div>
                     <div class="clear"></div>          
                     <h5>Profile Image</h5>
                     <hr>
                     <img src="../images/deprofile.png"  id="userpic" height=100px;>
-                    <input type="file" name="setprofilepic" id="setprofilepic" onchange="changeProfilePicture();"/> 
+                    <input type="file" name="profilepic" id="profilepic" onchange="changeProfilePicture();"/> 
                     <hr>
                     <a href="loginpage.html"><input type="button" name="backtologin" value="Back to Login Page"></a>
                     <input type="button" name="register" value="Register" id="register"  onclick="checknullValue();"/>
                     </div>
-            </div>
+                </form>
         </div>
     </body>
 </html>

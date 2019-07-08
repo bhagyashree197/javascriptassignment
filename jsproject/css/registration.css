@@ -57,19 +57,19 @@ header h3{
     margin-top:10px;
 }
 
-#setfirstname,#setemailid,#setcityname,#setcountryname{
+#firstname,#emailid,#cityname,countryname{
     margin-bottom:5px;
     width:100%;
     padding-left:10px;
 }
 
-#setlastname,#setpassword,#setpincode,#setstatename{
+#lastname,#password,#pincode,#statename{
     padding-left:10px;
     margin-bottom:5px;
     width:100%;
  }
 
-#setstreetname{
+#streetname{
     margin:15px 0px;
     width:100%;
 }

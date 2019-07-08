@@ -1,6 +1,6 @@
 
 function validatepincode(){
-    let pincode=document.getElementById("setpincode");
+    let pincode=document.getElementById("pincode");
     let pincodevalue=pincode.value;
     let pattern=/^[0-9]+$/;
     if(pincodevalue == ""){
@@ -9,18 +9,18 @@ function validatepincode(){
     }
     if(pincodevalue<0){
         document.getElementById("pincodespan").innerHTML="Pincode cannot be negative";
-        document.getElementById("setpincode").value="";
+        document.getElementById("pincode").value="";
         pincode.focus();
         return false;
     }
     if(!(pincodevalue.match(pattern))) {
         document.getElementById("pincodespan").innerHTML="Pincode should contain only Numbers";
-        document.getElementById("setpincode").value="";
+        document.getElementById("pincode").value="";
         return false;
     }
     if((pincodevalue.length>6)){
         document.getElementById("pincodespan").innerHTML="Pincode length should be 6";
-        document.getElementById("setpincode").value="";
+        document.getElementById("pincode").value="";
         pincode.focus();
         return false;
     }
@@ -37,15 +37,15 @@ function validatepincode(){
 
 
 function checknullValue(){
-    var firstName = document.getElementById("setfirstname").value;
-    var lastName = document.getElementById("setlastname").value;
-    var emailID=document.getElementById("setemailid").value;
-    var password=document.getElementById("setpassword").value;
+    var firstName = document.getElementById("firstname").value;
+    var lastName = document.getElementById("lastname").value;
+    var emailID=document.getElementById("emailid").value;
+    var password=document.getElementById("password").value;
     if((firstName=="null")||(lastName=="")/* ||(gender.checked.value =="") */||(emailID =="")||(password=="")){
-        document.getElementById("setfirstname").style.border="2px solid red";
-        document.getElementById("setlastname").style.border="2px solid red"
-        document.getElementById("setemailid").style.border="2px solid red"
-        document.getElementById("setpassword").style.border="2px solid red"
+        document.getElementById("firstname").style.border="2px solid red";
+        document.getElementById("lastname").style.border="2px solid red"
+        document.getElementById("emailid").style.border="2px solid red"
+        document.getElementById("password").style.border="2px solid red"
         document.getElementById("pagesubmission").innerHTML="**Please fill out all the mandatory Fields**";
         document.getElementById("pagesubmission").scrollIntoView({"behavior": 'smooth'})
         return false;
@@ -54,28 +54,27 @@ function checknullValue(){
 }
 
 function storevalue(){
-    var firstName = document.getElementById("setfirstname").value;
-    var lastName = document.getElementById("setlastname").value;
-    var gender = document.querySelector('input[name="setgender"]:checked').value;
-    var streetName = document.getElementById("setstreetname").value;
-    var cityName = document.getElementById("setcityname").value;
-    var stateName = document.getElementById("setstatename").value;
-    var countryName = document.getElementById("setcountryname").value;
-    var pincode = document.getElementById("setpincode").value;
-    var emailID=document.getElementById("setemailid").value;
-    var password=document.getElementById("setpassword").value;
+    var formId=document.getElementById("formpage");
     var obj=new Object();
-    obj.firstName=firstName;
-    obj.lastName=lastName
-    obj.Gender=gender;
-    obj.streetName=streetName;
-    obj.cityName=cityName;
-    obj.stateName=stateName;
-    obj.countryName=countryName;
-    obj.pincode=pincode;
-    obj.emailID=emailID;
-    var password=encryptPassword(password);
-    obj.password=password;
+    var childElements=formId.elements;
+    for(var i=0;i<childElements.length;i++)
+    {
+        var elementName=childElements[i].name;
+        var elementValue=childElements[i].value;
+        switch(childElements[i].getAttribute('type'))
+        {
+            case 'text':obj[elementName]=childElements[i].value;
+                            break;
+            case 'password':var encryptPasswordValue=encryptPassword(elementValue);
+                            obj[elementName]=encryptPasswordValue;
+                            break;
+            case 'email':obj[elementName]=childElements[i].value;
+                            break;
+            case 'number':obj[elementName]=childElements[i].value;
+                            break;
+        }
+    }
+    obj.gender = document.querySelector('input[name="gender"]:checked').value;
     obj.todoArray=[];
     obj.image=sessionStorage.getItem("tempimgdata");
     sessionStorage.removeItem("tempimgdata");
@@ -91,7 +90,7 @@ function storevalue(){
 }
 
 function changeProfilePicture(){
-    var Image =document.getElementById("setprofilepic").files[0];
+    var Image =document.getElementById("profilepic").files[0];
     getimgbase64(Image);
     function getimgbase64(Image){
         var reader = new FileReader();
@@ -113,6 +112,5 @@ function encryptPassword(passwordValue){
         newPasswordValue+=passwordValue.charCodeAt(i)+10;
         newPasswordValue+="-";
     }
-    alert(newPasswordValue);
     return newPasswordValue;
 }

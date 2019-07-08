@@ -12,14 +12,14 @@ function profileInDisabledMode(){
 	disableTextbox();
 	var arrayUserRecord=JSON.parse(localStorage.getItem("registeredUserRecord"));
 	var userId=sessionStorage.getItem("userId");
-	document.getElementById("firstname").value=arrayUserRecord[userId].firstName;
-	document.getElementById("lastname").value=arrayUserRecord[userId].lastName;
-	document.getElementById("streetname").value=arrayUserRecord[userId].streetName;
-	document.getElementById("cityname").value=arrayUserRecord[userId].cityName;
-	document.getElementById("statename").value=arrayUserRecord[userId].stateName;
-	document.getElementById("countryname").value=arrayUserRecord[userId].countryName;
+	document.getElementById("firstname").value=arrayUserRecord[userId].firstname;
+	document.getElementById("lastname").value=arrayUserRecord[userId].lastname;
+	document.getElementById("streetname").value=arrayUserRecord[userId].streetname;
+	document.getElementById("cityname").value=arrayUserRecord[userId].cityname;
+	document.getElementById("statename").value=arrayUserRecord[userId].statename;
+	document.getElementById("countryname").value=arrayUserRecord[userId].countryname;
 	document.getElementById("pincode").value=arrayUserRecord[userId].pincode;
-	document.getElementById("emailid").value=arrayUserRecord[userId].emailID;
+	document.getElementById("emailid").value=arrayUserRecord[userId].emailid;
 	if(arrayUserRecord[userId].Gender === "Male")
 		 document.getElementById("male").checked=true;
 	else if(arrayUserRecord[userId].Gender === "Female")

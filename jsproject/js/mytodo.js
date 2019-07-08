@@ -51,16 +51,24 @@ function addTodoItems(objectType){
 	arrayUserRecord[userId].todoArray.push(obj);
 	}
 	else if(objectType === "edited"){
-		let todoID=sessionStorage.getItem("todoId");
-		obj.todoID=todoID;
-		for(let i=0;i<todoArray.length;i++){
-			if(todoArray[i].todoID == todoID){
-			var todoIndex=i;
-			break;
-			}	
+
+		if(validateDate('enddate','startdate','dateerrorspan'))
+		{
+			let todoID=sessionStorage.getItem("todoId");
+			obj.todoID=todoID;
+			for(let i=0;i<todoArray.length;i++){
+				if(todoArray[i].todoID == todoID){
+					var todoIndex=i;
+					break;
+				}	
+			}
+			obj.todoStatus=todoArray[todoIndex].todoStatus;
+			arrayUserRecord[userId].todoArray[todoIndex]=obj;
 		}
-		obj.todoStatus=todoArray[todoIndex].todoStatus;
-		arrayUserRecord[userId].todoArray[todoIndex]=obj;
+		else
+		{
+			return false;
+		}
 	}
     arrayUserRecord=JSON.stringify(arrayUserRecord);
 	localStorage.setItem("registeredUserRecord",arrayUserRecord);
@@ -442,21 +450,18 @@ function changeStatusOfTodo(IdOfElement){
 function validateDate(date1,date2,errorspan){
 	let d2string=[];
 	let d1string=[];
-		current=new Date();
+		
 		d2=document.getElementById(date2).value;
 		d2string[1]=date2.substring(date2.length-4,date2.length);
 		d2string[0]=date2.substring(0,date2.length-4);
 		d2string=(d2string.join(" "));
-		console.log(d2string);
+		
 		d2string= (d2string[0].toUpperCase()) + d2string.slice(1);
-
-	
-	var d1=document.getElementById(date1).value;
-	d1string[1]=date1.substring(date1.length-4,date1.length);
-	d1string[0]=date1.substring(0,date1.length-4);
-	d1string=(d1string.join(" "));
-	console.log(d1string);
-	d1string= (d1string[0].toUpperCase()) + d1string.slice(1);
+		var d1=document.getElementById(date1).value;
+		d1string[1]=date1.substring(date1.length-4,date1.length);
+		d1string[0]=date1.substring(0,date1.length-4);
+		d1string=(d1string.join(" "));
+		d1string= (d1string[0].toUpperCase()) + d1string.slice(1);
 	if((new Date(d1)).getTime()<(new Date(d2)).getTime()){
 		document.getElementById(errorspan).innerHTML=d1string+" Cannot be before "+d2string;
 		document.getElementById(date1).value="";

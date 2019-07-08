@@ -231,6 +231,7 @@ textarea{
 .tododisplayclass h1{
     font-size:25px;
     margin-top:10px;
+    overflow:hidden;
 }
 .isdonediv h3{
 	font-size:20px;

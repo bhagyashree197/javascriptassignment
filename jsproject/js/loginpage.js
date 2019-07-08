@@ -19,7 +19,7 @@ function validateCredentials(spanId){
     }
     else{
         for(var count=0;count<getUserArray.length;count++){
-            if(emailID.value == getUserArray[count].emailID){
+            if(emailID.value == getUserArray[count].emailid){
                 let decryptPasswordValue;
                 decryptPasswordValue=decryptPassword(getUserArray[count].password);
                 if(decryptPasswordValue === password.value){
