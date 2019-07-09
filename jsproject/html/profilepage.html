@@ -41,10 +41,10 @@
                 <input type="radio" name="gender" id="female" value="Female"/><label>Female</label>
                 <input type="radio" name="gender" id="other" value="Other"/><label>Other</label></div>
 					<div class="profilefield"><label for="streetname">Street Name</label><input type="text" name="streetname" id="streetname" placeholder="Plot No/ Building name/ Street Name"/></div>
-					<div class="profilefield"><label for="cityname">City Name</label><input type="text" name="cityname" id="cityname" placeholder="City" onfocusout="validateonlycharacters(this);"/></div>
-					<div class="profilefield"><label for="statename">State Name</label><input type="text" name="statename" id="statename" placeholder="State" onfocusout="validateonlycharacters(this);"/></div>
-					<div class="profilefield"><label for="statename">Country Name</label><input type="text" name="countryname" id="countryname" placeholder="Country" onfocusout="validateonlycharacters(this);"></div>
-					<div class="profilefield"><label for="pincode">Pincode</label><input type="number" name="pincode" id="pincode" placeholder="Pincode"onfocusout="validatepincode();"/></div>
+					<div class="profilefield"><label for="cityname">City Name</label><input type="text" name="cityname" id="cityname" placeholder="City" onfocusout="validateonlycharacters(this,'cityerror');"/><p id=cityerror></p></div>
+					<div class="profilefield"><label for="statename">State Name</label><input type="text" name="statename" id="statename" placeholder="State" onfocusout="validateonlycharacters(this,'stateerror');"/><p id=stateerror></p></div>
+					<div class="profilefield"><label for="statename">Country Name</label><input type="text" name="countryname" id="countryname" placeholder="Country" onfocusout="validateonlycharacters(this,'countryerror');"><p id=countryerror></p></div>
+					<div class="profilefield"><label for="pincode">Pincode</label><input type="number" name="pincode" id="pincode" placeholder="Pincode"onfocusout="validatepincode(this,);"/><p id=pincodeerror></p></div>
 					<div class="profilefield"><label for="email">Email Address</label><input type="text" name="emailid" id="emailid" placeholder="Email Address"/></div>
                    
                </form>

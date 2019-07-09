@@ -46,7 +46,7 @@ function usernameValidate(idOfElement,spanId){
 		return true;
     }
     for(var count=0;count<userRecordArray.length;count++){
-        if(userRecordArray[count].emailID.match(valueOfElement)){
+        if(userRecordArray[count].emailid.match(valueOfElement)){
             dummyVariable=1;
             break;
         }

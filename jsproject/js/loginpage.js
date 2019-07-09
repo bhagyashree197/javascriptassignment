@@ -13,8 +13,6 @@ function validateCredentials(spanId){
     let userId;
     if(!emailID.value.match(pattern)){
         document.getElementById(spanId).innerHTML="Invalid Email Address";
-        idOfElement.value="";
-        idOfElement.focus();
         return false;
     }
     else{
