@@ -5,6 +5,15 @@ if(sessionStorage.getItem("userId")!== null)
 }
 })();
 
+(function(){
+    document.addEventListener('keypress', function(event) {
+   if (event.keyCode == 13) {
+       
+    validateCredentials('errorusername');
+   }})
+}());
+
+
 function validateCredentials(spanId){
     var emailID=document.getElementById("emailaddress");
     var password=document.getElementById("password");
@@ -43,13 +52,6 @@ function validateCredentials(spanId){
     }
 }
 
-(function(){
-    document.addEventListener('keypress', function(event) {
-   if (event.keyCode == 13) {
-       
-    validateCredentials('errorusername');
-   }})
-}());
 
 function decryptPassword(passwordValue){
     let originalPasswordValue="";

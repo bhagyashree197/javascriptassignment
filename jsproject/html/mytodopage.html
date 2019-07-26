@@ -8,9 +8,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <script src="../js/validationtype.js"></script>
         <script src="../js/mytodo.js"></script>
+        <script src="../js/displaytodo.js"></script>
         
     </head>
-    <body onload="filterTodoFunction();">
+    <body onload="filterFunctions.filterTodoFunction();">
         <header>
             <div class="container">
                 <div class="logo">
@@ -29,8 +30,8 @@
                 </div>
                 <div class="bodysection" id="bodysection">
                     <div class="functionbutton">
-                        <input type=button name="New" value="New+" onclick="enableForm('createform');"/>
-                        <a href="javascript:deletetodos();"> <i class="material-icons">delete</i></a>
+                        <input type=button name="New" value="New+" onclick="todoFunctions.enableForm('createform');"/>
+                        <a href="javascript:todoFunctions.deletetodos();"> <i class="material-icons">delete</i></a>
                     </div> 
                     <div id="formpage">
                         <h3 id="savestatus">
@@ -54,9 +55,9 @@
                         </div>
                         <div class="todoitem1"> <label for="descriptionlabel">Description</label><textarea name="tododescription" id="tododescription"></textarea></div>
                         <input type=button class="formbutton" name="addtodoitem" id="addtodoitem" value="Add TODO Item" onclick="validateitems('new');"/>
-                        <input type=button class="formbutton" name="edittodoitem" id="edittodoitem" value="Edit" onclick="editTodoItems();"/>
+                        <input type=button class="formbutton" name="edittodoitem" id="edittodoitem" value="Edit" onclick="todoFunctions.editTodoItems();"/>
 				        <input type=button class="formbutton" name="saveeditedtodoitem" id="saveeditedtodoitem" value="Save"  onclick="validateitems('edited');"/>
-                        <input type=button class="formbutton"  name="gobacktodisplaypage" id="gobacktodisplaypage" value="Go Back To Display Page" onclick="enableDisplay();"/>
+                        <input type=button class="formbutton"  name="gobacktodisplaypage" id="gobacktodisplaypage" value="Go Back To Display Page" onclick="filterFunctions.filterTodoFunction();"/>
                     </div>
                     <div id="mytodopageclass">
                         <h2>MY TODO</h2>
